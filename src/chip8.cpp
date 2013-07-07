@@ -23,20 +23,18 @@ chip8::chip8() : I(0), opcode(0), pc(0x200), sp(0), delay_timer(0),
 
 bool chip8::loadGame(std::string filename)
 {
-  std::ifstream file;
-  file.open(filename, std::ios::binary);
+  std::ifstream file(filename, std::ios::binary);
 
-  if (file.is_open()) {
-    file.seekg(0, std::ios::end);
-    int file_size = file.tellg();
-    file.seekg(0, std::ios::beg);
-    
-    file.read((char*)(memory.begin() + 512), file_size);
-    
-    file.close();
-    return true;
-  }
-  return false;
+  if (!file.is_open()) return false;
+
+  file.seekg(0, std::ios::end);
+  int file_size = file.tellg();
+  file.seekg(0, std::ios::beg);
+
+  file.read((char*)(memory.begin() + 512), file_size);
+
+  file.close();
+  return true;
 }
 
 void chip8::emulateCycle()
