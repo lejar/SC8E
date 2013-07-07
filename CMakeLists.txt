@@ -16,10 +16,10 @@ include_directories(${gtest_SOURCE_DIR}/include)
 include_directories(${gmock_SOURCE_DIR}/include)
 
 enable_testing()
-add_executable(Chip8Test EXCLUDE_FROM_ALL
+add_executable(Chip8Test
+              src/chip8Test.cpp
               src/chip8.h
-              src/chip8.cpp
-              src/chip8Test.cpp)
+              src/chip8.cpp)
 target_link_libraries(Chip8Test gmock_main)
 add_test(Chip8Test Chip8Test)
 
@@ -31,9 +31,9 @@ endif()
 
 set(EXECUTABLE_NAME Chip8Emulator)
 add_executable(${EXECUTABLE_NAME}
+                src/emulator.cpp
                 src/chip8.h
-                src/chip8.cpp
-                src/emulator.cpp)
+                src/chip8.cpp)
 
 #Libraries
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
