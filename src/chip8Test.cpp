@@ -1,8 +1,5 @@
-#include <array>
 #include <algorithm>
 #include <cstdint>
-#include <iostream>
-#include <string>
 #include <vector>
 
 #include "chip8.h"
