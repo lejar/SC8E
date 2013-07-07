@@ -1,13 +1,11 @@
+#include "chip8.h"
+
 #include <algorithm>
-#include <array>
-#include <cstdint>
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
-#include <iostream>
+#include <ios>
 #include <string>
-
-#include "chip8.h"
 
 chip8::chip8()
 {

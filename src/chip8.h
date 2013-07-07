@@ -1,6 +1,9 @@
 #ifndef CHIP8_H
 #define CHIP8_H
 
+#include <array>
+#include <cstdint>
+
 class chip8
 {
 public:
