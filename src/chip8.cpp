@@ -7,24 +7,16 @@
 #include <ios>
 #include <string>
 
-chip8::chip8()
+chip8::chip8() : I(0), opcode(0), pc(0x200), sp(0), delay_timer(0),
+  sound_timer(0), drawFlag(true)
 {
-  pc = 0x200;
-  opcode = 0;
-  I = 0;
-  sp = 0;
-  drawFlag = true;
-
   std::fill(gfx.begin(),    gfx.end(),    0);
   std::fill(stack.begin(),  stack.end(),  0);
   std::fill(V.begin(),      V.end(),      0);
   std::fill(memory.begin(), memory.end(), 0);
-  std::fill(key.begin(), key.end(), 0);
+  std::fill(key.begin(),    key.end(),    0);
 
   std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
-
-  delay_timer = 0;
-  sound_timer = 0;
 
   std::srand(std::time(0));
 }
