@@ -35,7 +35,7 @@ execute_process(COMMAND python ${CMAKE_SOURCE_DIR}/utils/wavconverter.py)
 set(EXECUTABLE_NAME Chip8Emulator)
 add_executable(${EXECUTABLE_NAME}
                 src/emulator.cpp
-                src/blip.h
+                src/res/blip.h
                 src/chip8.h
                 src/chip8.cpp)
 

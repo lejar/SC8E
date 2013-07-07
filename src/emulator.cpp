@@ -6,8 +6,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "blip.h"
 #include "chip8.h"
+#include "res/blip.h"
 
 std::array<sf::Keyboard::Key, 16> layout{{
     sf::Keyboard::Num1,
