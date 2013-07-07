@@ -41,3 +41,8 @@ find_package(SFML 2 REQUIRED system window graphics network audio)
 
 include_directories(${SFML_INCLUDE_DIR})
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
+
+#Copy resources
+add_custom_command(TARGET Chip8Emulator PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                       ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:Chip8Emulator>/resources)

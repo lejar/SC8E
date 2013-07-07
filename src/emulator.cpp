@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "chip8.h"
@@ -29,10 +30,10 @@ std::array<sf::Keyboard::Key, 16> layout{{
 
 int main(int argc, char* argv[])
 {
-  //initialize chip8 module
+  // initialize chip8 module
   chip8 emu;
 
-  //parse arguments
+  // parse arguments
   std::string filename;  
   if (argc > 1) {
     filename = argv[1];
@@ -45,22 +46,28 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  //create window
+  // create window
   sf::RenderWindow window(sf::VideoMode(640, 320), "YAC8E");
   window.setFramerateLimit(120);
   sf::RectangleShape shape(sf::Vector2<float>(10, 10));
   shape.setFillColor(sf::Color::Green);
 
+  // set up audio
+  sf::SoundBuffer buffer;
+  if (!buffer.loadFromFile("resources/sounds/blip.wav"))
+    std::cerr << "Could not load audio resources, continuing without!" << std::endl;  
+  sf::Sound sound;
+  sound.setBuffer(buffer);
 
   while (window.isOpen()) {
-    //poll events
+    // poll events
     sf::Event event;
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
     }
 
-    //get keys
+    // get keys
     std::array<std::uint8_t, 16> keys;
     for (int i = 0; i < 16; i++)
       if (sf::Keyboard::isKeyPressed(layout[i]))
@@ -69,10 +76,10 @@ int main(int argc, char* argv[])
         keys[i] = 0;
     emu.setKeys(keys);
 
-    //do cpu cycles
+    // do cpu cycles
     emu.emulateCycle();
 
-    //draw
+    // draw
     if (emu.drawFlag) {
       emu.drawFlag = false;
       window.clear(sf::Color(0,0,0,255));
@@ -84,11 +91,10 @@ int main(int argc, char* argv[])
           }
     }
     window.display();
-    //audio
-    /*
+    
+    // audio
     if(emu.beep)
-      call_beep_function();
-    */
+      sound.play();
   }
 
   return 0;
