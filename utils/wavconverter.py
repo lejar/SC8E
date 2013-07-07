@@ -12,7 +12,7 @@ with open('../resources/sounds/blip.wav', 'rb') as f:
   while byte != '':
       bytes.append(byte)
       byte = f.read(1)
-with open('../src/blip.h', 'w') as f:
+with open('../src/res/blip.h', 'w') as f:
   f.write('#ifndef BLIP_H\n')
   f.write('#define BLIP_H\n\n')
   f.write('#include <cstdint>\n')
