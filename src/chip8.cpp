@@ -7,8 +7,8 @@
 #include <ios>
 #include <string>
 
-chip8::chip8() : I(0), opcode(0), pc(0x200), sp(0), delay_timer(0),
-  sound_timer(0), drawFlag(true)
+chip8::chip8() : I(0), pc(0x200), sp(0), delay_timer(0), sound_timer(0),
+  drawFlag(true)
 {
   std::fill(gfx.begin(),    gfx.end(),    0);
   std::fill(stack.begin(),  stack.end(),  0);
@@ -40,7 +40,7 @@ bool chip8::loadGame(std::string filename)
 void chip8::emulateCycle()
 {
   // get current opcode
-  opcode = (memory[pc] << 8) | memory[pc + 1];
+  std::uint16_t opcode = (memory[pc] << 8) | memory[pc + 1];
 
   // handle opcode
   switch (opcode & 0xF000) {
