@@ -7,7 +7,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
   set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -g")
+list(APPEND CMAKE_CXX_FLAGS "-std=c++0x")
 
 include_directories("${PROJECT_BINARY_DIR}")
 
@@ -29,9 +29,13 @@ else()
 	add_custom_target(tests ctest DEPENDS Chip8Test)
 endif()
 
+#Copy resources to header file
+execute_process(COMMAND python ${CMAKE_SOURCE_DIR}/utils/wavconverter.py)
+
 set(EXECUTABLE_NAME Chip8Emulator)
 add_executable(${EXECUTABLE_NAME}
                 src/emulator.cpp
+                src/blip.h
                 src/chip8.h
                 src/chip8.cpp)
 
@@ -41,8 +45,3 @@ find_package(SFML 2 REQUIRED system window graphics network audio)
 
 include_directories(${SFML_INCLUDE_DIR})
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
-
-#Copy resources
-add_custom_command(TARGET Chip8Emulator PRE_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy_directory
-                       ${CMAKE_SOURCE_DIR}/resources $<TARGET_FILE_DIR:Chip8Emulator>/resources)

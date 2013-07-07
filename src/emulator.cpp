@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "blip.h"
 #include "chip8.h"
 
 std::array<sf::Keyboard::Key, 16> layout{{
@@ -54,7 +55,7 @@ int main(int argc, char* argv[])
 
   // set up audio
   sf::SoundBuffer buffer;
-  if (!buffer.loadFromFile("resources/sounds/blip.wav"))
+  if (!buffer.loadFromMemory(blip.data(), blip.size()))
     std::cerr << "Could not load audio resources, continuing without!" << std::endl;  
   sf::Sound sound;
   sound.setBuffer(buffer);
