@@ -10,7 +10,6 @@ class chip8
 public:
   // cpu variables
   std::uint16_t I;
-  std::uint16_t opcode;
   std::uint16_t pc;
   std::uint16_t sp;
   std::array<std::uint16_t, 16>     stack;

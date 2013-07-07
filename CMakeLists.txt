@@ -7,7 +7,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
   set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-list(APPEND CMAKE_CXX_FLAGS "-std=c++0x")
+list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -pedantic")
 
 include_directories("${PROJECT_BINARY_DIR}")
 

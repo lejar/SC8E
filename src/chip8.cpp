@@ -7,50 +7,40 @@
 #include <ios>
 #include <string>
 
-chip8::chip8()
+chip8::chip8() : I(0), pc(0x200), sp(0), delay_timer(0), sound_timer(0),
+  drawFlag(true)
 {
-  pc = 0x200;
-  opcode = 0;
-  I = 0;
-  sp = 0;
-  drawFlag = true;
-
   std::fill(gfx.begin(),    gfx.end(),    0);
   std::fill(stack.begin(),  stack.end(),  0);
   std::fill(V.begin(),      V.end(),      0);
   std::fill(memory.begin(), memory.end(), 0);
-  std::fill(key.begin(), key.end(), 0);
+  std::fill(key.begin(),    key.end(),    0);
 
   std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
-
-  delay_timer = 0;
-  sound_timer = 0;
 
   std::srand(std::time(0));
 }
 
 bool chip8::loadGame(std::string filename)
 {
-  std::ifstream file;
-  file.open(filename, std::ios::binary);
+  std::ifstream file(filename, std::ios::binary);
 
-  if (file.is_open()) {
-    file.seekg(0, std::ios::end);
-    int file_size = file.tellg();
-    file.seekg(0, std::ios::beg);
-    
-    file.read((char*)(memory.begin() + 512), file_size);
-    
-    file.close();
-    return true;
-  }
-  return false;
+  if (!file.is_open()) return false;
+
+  file.seekg(0, std::ios::end);
+  int file_size = file.tellg();
+  file.seekg(0, std::ios::beg);
+
+  file.read((char*)(memory.begin() + 512), file_size);
+
+  file.close();
+  return true;
 }
 
 void chip8::emulateCycle()
 {
   // get current opcode
-  opcode = (memory[pc] << 8) | memory[pc + 1];
+  std::uint16_t opcode = (memory[pc] << 8) | memory[pc + 1];
 
   // handle opcode
   switch (opcode & 0xF000) {
