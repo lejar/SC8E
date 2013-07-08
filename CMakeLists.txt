@@ -29,15 +29,19 @@ else()
 	add_custom_target(tests ctest DEPENDS Chip8Test)
 endif()
 
-#Copy resources to header file
-execute_process(COMMAND python ${CMAKE_SOURCE_DIR}/utils/wavconverter.py)
-
 set(EXECUTABLE_NAME Chip8Emulator)
 add_executable(${EXECUTABLE_NAME}
                 src/emulator.cpp
                 src/res/blip.h
                 src/chip8.h
                 src/chip8.cpp)
+
+set_source_files_properties(src/res/blip.h
+                            PROPERTIES GENERATED TRUE)
+add_custom_command(
+  OUTPUT src/res/blip.h
+  COMMAND python ${CMAKE_SOURCE_DIR}/utils/wavconverter.py
+)
 
 #Libraries
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
