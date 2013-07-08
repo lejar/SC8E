@@ -18,7 +18,7 @@ static std::vector<std::uint8_t> blip = {
 """ % '\n\t'.join(
   textwrap.wrap(
     ', '.join('0x%02x' % ord(y) for y in data),
-  80)
+  79)
 )
 
 makedirs('../src/res/')
