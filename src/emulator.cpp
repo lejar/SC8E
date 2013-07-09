@@ -27,7 +27,6 @@ std::array<sf::Keyboard::Key, 16> layout{{
     sf::Keyboard::F,
     sf::Keyboard::V
   }};
-  
 
 int main(int argc, char* argv[])
 {
@@ -35,7 +34,7 @@ int main(int argc, char* argv[])
   chip8 emu;
 
   // parse arguments
-  std::string filename;  
+  std::string filename;
   if (argc > 1) {
     filename = argv[1];
     if (!emu.loadGame(filename)) {
@@ -56,7 +55,7 @@ int main(int argc, char* argv[])
   // set up audio
   sf::SoundBuffer buffer;
   if (!buffer.loadFromMemory(blip.data(), blip.size()))
-    std::cerr << "Could not load audio resources, continuing without!" << std::endl;  
+    std::cerr << "Could not load audio resources, continuing without!" << std::endl;
   sf::Sound sound;
   sound.setBuffer(buffer);
 
@@ -92,7 +91,7 @@ int main(int argc, char* argv[])
           }
     }
     window.display();
-    
+
     // audio
     if(emu.beep)
       sound.play();
