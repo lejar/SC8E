@@ -9,7 +9,7 @@
 #include <string>
 
 // 0x00E0 clears the screen
-void chip8::CLS(std::uint16_t opcode)
+void chip8::CLS(std::uint16_t)
 {
   std::fill(gfx.begin(), gfx.end(), 0);
   drawFlag = true;
@@ -17,7 +17,7 @@ void chip8::CLS(std::uint16_t opcode)
 }
 
 // 0x00EE returns from subroutine
-void chip8::RET(std::uint16_t opcode)
+void chip8::RET(std::uint16_t)
 {
   --sp;
   pc = stack[sp];
