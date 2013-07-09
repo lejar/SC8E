@@ -304,7 +304,7 @@ void chip8::emulateCycle()
         case 0x0033:
           memory[I]     =  V[(opcode & 0x0F00) >> 8] / 100;
           memory[I + 1] = (V[(opcode & 0x0F00) >> 8] / 10) % 10;
-          memory[I + 2] = (V[(opcode & 0x0F00) >> 8] % 100) % 10;
+          memory[I + 2] = (V[(opcode & 0x0F00) >> 8] % 10);
           pc += 2;
           break;
 
