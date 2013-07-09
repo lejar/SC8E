@@ -34,7 +34,8 @@ TEST_F(chip8Test, op_0x00E0)
   EXPECT_EQ(512 + 2, emu.pc);
 
   // check and see if gfx is cleared
-  ASSERT_THAT(emu.gfx, Each(Eq(0)));
+  std::array<std::uint8_t, 2048> temp{{0}};
+  ASSERT_EQ(temp, emu.gfx);
 }
 
 TEST_F(chip8Test, op_0x00EE)
@@ -554,7 +555,7 @@ TEST_F(chip8Test, op_0xDXYN)
   emu.memory[512]     = 0xD6;
   emu.memory[512 + 1] = 0x75;
 
-  // set I and VX, VY
+  // pixel positions
   emu.I = 0xA30;
   emu.V[0x6] = 6;
   emu.V[0x7] = 7;
@@ -570,20 +571,17 @@ TEST_F(chip8Test, op_0xDXYN)
   EXPECT_EQ(true, emu.drawFlag);
 
   // check and see if gfx is not empty
-  ASSERT_THAT(emu.gfx, Contains(Ne(0)));
+  std::array<std::uint8_t, 2048> expected{{0}};
+  expected[6 + 7*64] = 1;
+  expected[7 + 7*64] = 1;
+  expected[8 + 7*64] = 1;
+  expected[9 + 7*64] = 1;
+  expected[9 + 8*64] = 1;
+  expected[8 + 9*64] = 1;
+  expected[7 + 10*64] = 1;
+  expected[7 + 11*64] = 1;
 
-  // check pixels are drawn
-  std::vector<int> temp{{
-                        emu.gfx[6 + 7*64],
-                        emu.gfx[7 + 7*64],
-                        emu.gfx[8 + 7*64],
-                        emu.gfx[9 + 7*64],
-                        emu.gfx[9 + 8*64],
-                        emu.gfx[8 + 9*64],
-                        emu.gfx[7 + 10*64],
-                        emu.gfx[7 + 11*64]
-                      }};
-  ASSERT_THAT(temp, Each(Eq(1)));
+  ASSERT_EQ(expected, emu.gfx);
 
   // check that pc was incremented
   ASSERT_EQ(514, emu.pc);
