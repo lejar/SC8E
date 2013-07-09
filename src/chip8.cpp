@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <iterator>
 #include <ios>
 #include <string>
 
@@ -27,13 +28,12 @@ bool chip8::loadGame(std::string filename)
 
   if (!file.is_open()) return false;
 
-  file.seekg(0, std::ios::end);
-  int file_size = file.tellg();
-  file.seekg(0, std::ios::beg);
+  auto iter = std::istreambuf_iterator<char>(file);
+  auto end = std::istreambuf_iterator<char>();
+  if (std::distance(iter, end) > 3583)
+    return false;
+  std::copy(iter, end, memory.begin() + 512);
 
-  file.read((char*)(memory.begin() + 512), file_size);
-
-  file.close();
   return true;
 }
 
@@ -66,7 +66,7 @@ void chip8::emulateCycle()
     case 0x1000:
       pc = opcode & 0x0FFF;
       break;
-    
+
     // 0x2NNN jump to subroutine at NNN
     case 0x2000:
       stack[sp] = pc;
