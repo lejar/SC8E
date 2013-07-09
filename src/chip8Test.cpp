@@ -541,6 +541,20 @@ TEST_F(chip8Test, op_BNNN)
   ASSERT_EQ((0xA30 + 0xCC), emu.pc);
 }
 
+TEST_F(chip8Test, op_CXNN)
+{
+  // rng assumes std::rand
+  emu.memory[512]     = 0xCA;
+  emu.memory[512 + 1] = 0x30;
+
+  // make sure rng is in known state
+  std::srand(13);
+  emu.emulateCycle();
+
+  std::srand(13);
+  ASSERT_EQ(std::rand() & 0x30, emu.V[0xA]);
+}
+
 TEST_F(chip8Test, op_0xDXYN)
 {
   // set op code
@@ -808,7 +822,7 @@ TEST_F(chip8Test, op_FX65)
   // check memory copied to V
   for (int i = 0; i <= 0x3; i++)
     ASSERT_EQ(emu.V[0x0 + i], emu.memory[0xA30 + i]);
-  
+
   // check incremented
   ASSERT_EQ(514, emu.pc);
 }
