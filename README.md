@@ -1,3 +1,8 @@
+SC8E
+====
+
+[![Build Status](https://travis-ci.org/lejar/SC8E.png?branch=master)](https://travis-ci.org/lejar/SC8E)
+
 To build the project:
 
 ```
