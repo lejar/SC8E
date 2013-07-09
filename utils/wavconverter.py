@@ -1,4 +1,5 @@
-from os import makedirs
+import errno
+from os import makedirs, path
 import textwrap
 
 with open('../resources/sounds/blip.wav', 'rb') as i:
@@ -21,6 +22,10 @@ static std::vector<std::uint8_t> blip = {
   79)
 )
 
-makedirs('../src/res/')
+try:
+  makedirs('../src/res/')
+except OSError:
+  pass
+
 with open('../src/res/blip.h', 'w') as f:
   f.write(header)
