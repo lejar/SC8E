@@ -11,16 +11,15 @@ list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -pedantic")
 
 include_directories("${PROJECT_BINARY_DIR}")
 
-add_subdirectory(include/gmock EXCLUDE_FROM_ALL)
+add_subdirectory(include/gtest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include)
-include_directories(${gmock_SOURCE_DIR}/include)
 
 enable_testing()
 add_executable(Chip8Test
               src/chip8Test.cpp
               src/chip8.h
               src/chip8.cpp)
-target_link_libraries(Chip8Test gmock_main)
+target_link_libraries(Chip8Test gtest_main)
 add_test(Chip8Test Chip8Test)
 
 if (test)

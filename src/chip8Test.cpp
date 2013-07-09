@@ -3,15 +3,7 @@
 #include <vector>
 
 #include "chip8.h"
-#include "gmock/gmock.h"
 #include "gtest/gtest.h"
-
-
-using ::testing::Each;
-using ::testing::Contains;
-using ::testing::ContainerEq;
-using ::testing::Eq;
-using ::testing::Ne;
 
 class chip8Test : public ::testing::Test {
 protected:
