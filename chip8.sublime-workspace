@@ -1,0 +1,921 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"emula",
+				"EmulatorCanvas"
+			],
+			[
+				"se",
+				"setAttribute"
+			],
+			[
+				"emu",
+				"emulateCycle"
+			],
+			[
+				"em",
+				"emulateCycle"
+			],
+			[
+				"chip",
+				"chip8Test"
+			],
+			[
+				"draw",
+				"drawFlag"
+			],
+			[
+				"request",
+				"request_info"
+			],
+			[
+				"file",
+				"file_size"
+			],
+			[
+				"Http",
+				"HttpResponse"
+			],
+			[
+				"uip",
+				"uip_ipaddr_t"
+			],
+			[
+				"get",
+				"getMolFrac"
+			],
+			[
+				"cati",
+				"cationCutOff"
+			],
+			[
+				"search",
+				"searchCutOff"
+			],
+			[
+				"T4",
+				"T4DLatticeVector"
+			],
+			[
+				"assume",
+				"assumeValue"
+			],
+			[
+				"Get",
+				"Get3DVector"
+			],
+			[
+				"elemID",
+				"elemIDtoString"
+			],
+			[
+				"GetAtom",
+				"GetAtomSites"
+			],
+			[
+				"latti",
+				"lattice_size"
+			],
+			[
+				"T4d",
+				"T4DLatticeVector"
+			],
+			[
+				"jump",
+				"jump_center4D"
+			],
+			[
+				"jump_",
+				"jump_center3D"
+			],
+			[
+				"jump_ce",
+				"jump_center4D"
+			],
+			[
+				"jump_cen",
+				"jump_center4D"
+			],
+			[
+				"movin",
+				"moving_elem"
+			],
+			[
+				"T4D",
+				"T4DLatticeVector"
+			],
+			[
+				"total",
+				"totalsum"
+			],
+			[
+				"gsl_",
+				"gsl_rng_uniform"
+			],
+			[
+				"stat",
+				"static_elem"
+			],
+			[
+				"gsl_rng_un",
+				"gsl_rng_uniform_int"
+			],
+			[
+				"gsl_rng_",
+				"gsl_rng_uniform_int"
+			],
+			[
+				"T",
+				"TMMCCell"
+			],
+			[
+				"ATTRIB_",
+				"ATTRIB_NORMAL"
+			],
+			[
+				"ATTRIB",
+				"ATTRIB_COLOR"
+			],
+			[
+				"shad",
+				"shaderprogram"
+			],
+			[
+				"lattic",
+				"latticeDim"
+			],
+			[
+				"mag",
+				"magnetization"
+			],
+			[
+				"bon",
+				"numBonds"
+			],
+			[
+				"make",
+				"make_tuple"
+			],
+			[
+				"trans",
+				"transMat"
+			],
+			[
+				"vec3",
+				"normVec3"
+			],
+			[
+				"view",
+				"viewDirection"
+			],
+			[
+				"numSp",
+				"numSpheresScene1"
+			],
+			[
+				"rec",
+				"recursionLevel"
+			],
+			[
+				"dist",
+				"distVec3"
+			],
+			[
+				"translate",
+				"translateSeconds"
+			],
+			[
+				"transf",
+				"transformMinutes"
+			],
+			[
+				"tansform",
+				"transformMinutes"
+			],
+			[
+				"transfo",
+				"transformSeconds"
+			],
+			[
+				"scal",
+				"scalingMatrix"
+			],
+			[
+				"transform",
+				"transformHours"
+			],
+			[
+				"auto",
+				"autocorrelation"
+			],
+			[
+				"gap",
+				"gapStDev"
+			],
+			[
+				"fr",
+				"freqAverage"
+			],
+			[
+				"freq",
+				"freqStdDev"
+			],
+			[
+				"fre",
+				"frequency"
+			],
+			[
+				"cu",
+				"cudaMemcpyHostToDevice"
+			],
+			[
+				"en",
+				"enPowers"
+			],
+			[
+				"rij",
+				"rijSquare"
+			],
+			[
+				"cuda",
+				"cudaMalloc"
+			],
+			[
+				"cudaM",
+				"cudaMemCpy"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/instructions.cpp",
+			"settings":
+			{
+				"buffer_size": 5770,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/chip8.h",
+			"settings":
+			{
+				"buffer_size": 3569,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/chris/.config/sublime-text-2/Packages/Whitespaces/Whitespaces.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 1057,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/chris/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 13677,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/chip8.cpp",
+			"settings":
+			{
+				"buffer_size": 1432,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/chris/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 268,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 54.0,
+		"selected_items":
+		[
+			[
+				"packa remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"pic",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"pi",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"GitHub: Update Gist"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/chris/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+		"/home/chris/.config/sublime-text-2/Packages/User/Whitespaces.sublime-settings",
+		"/home/chris/Desktop/chip8/src/emulatorcanvas.h",
+		"/home/chris/Desktop/chip8/src/qsfmlcanvas.h",
+		"/home/chris/Desktop/chip8/src/qsfmlcanvas.cpp",
+		"/home/chris/Desktop/chip8/src/emulatorcanvas.cpp",
+		"/home/chris/Desktop/chip8/src/emulator.cpp",
+		"/home/chris/Desktop/chip8/src/chip8Test.cpp",
+		"/home/chris/Desktop/chip8/CMakeLists.txt",
+		"/home/chris/Desktop/chip8/.gitignore",
+		"/home/chris/Desktop/chip8/utils/wavconverter.py",
+		"/home/chris/Desktop/chip8/src/chip8.cpp",
+		"/home/chris/Desktop/chip8/src/chip8.h",
+		"/home/chris/Desktop/test.cpp",
+		"/home/chris/Desktop/chip8/cmake_modules/FindSFML.cmake",
+		"/home/chris/Desktop/chip8/src/blip.h",
+		"/home/chris/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/chris/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/chris/Desktop/SnakeTest/CMakeLists.txt",
+		"/home/chris/Desktop/chip8/src/test.cpp",
+		"/home/chris/Desktop/chip8/src/test.h",
+		"/home/chris/Desktop/djcode/mysite/mysite/templates/hours_ahead.html",
+		"/home/chris/Desktop/djcode/mysite/mysite/templates/request_info.html",
+		"/home/chris/Desktop/djcode/mysite/mysite/views.py",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/jobs/hydrazin/radical/amino_r_ic220.in",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/jobs/hydrazin/radical/amino_r_gm220.in",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/jobs/hydrazin/hydrazin/hydrazin_ic220.in",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/jobs/hydrazin/hydrazin/hydrazin_gm220.in",
+		"/home/chris/Desktop/djcode/mysite/mysite/templates/base.html",
+		"/home/chris/Desktop/amolqc/src/wfparameters_m.f90",
+		"/home/chris/Desktop/amolqc/src/depends.mk",
+		"/home/chris/Desktop/sharepoint/test.py",
+		"/home/chris/Desktop/sharepoint/sharepoint.py",
+		"/home/chris/Desktop/fabrictest/fabrictest.py",
+		"/home/chris/Desktop/djcode/mysite/books/views.py",
+		"/home/chris/Desktop/djcode/mysite/books/models.py",
+		"/home/chris/Desktop/djcode/mysite/mysite/settings.py",
+		"/home/chris/Desktop/djcode/mysite/books/tests.py",
+		"/home/chris/Desktop/djcode/mysite/mysite/urls.py",
+		"/home/chris/Desktop/djcode/mysite/mysite/templates/current_datetime.html",
+		"/home/chris/Desktop/djcode/mysite/mysite/templates/date_time.html",
+		"/home/chris/Desktop/djcode/mysite/views.py",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_ic220_opt.wf",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_gm220_opt.wf",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/optimtest.in",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/eloctest.in",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_gm220.in",
+		"/home/chris/Desktop/amolqc/src/aos_m.f",
+		"/home/chris/Desktop/amolqc/src/geminal_m.f90",
+		"/home/chris/Desktop/amolqc/tools/terms.rb",
+		"/home/chris/Desktop/amolqc/cmds/jastrow_varmin1.cmd",
+		"/home/chris/Desktop/amolqc/doc/user_manual.txt",
+		"/home/chris/Desktop/Drivers/Makefile",
+		"/home/chris/Desktop/Drivers/pen_driver.c",
+		"/home/chris/Desktop/Drivers/pen_probe.c",
+		"/home/chris/Desktop/Drivers/pen_register.c",
+		"/home/chris/Desktop/SnakeTest/src/state.h",
+		"/home/chris/Desktop/SnakeTest/src/SnakeTest.cpp",
+		"/home/chris/Desktop/SnakeTest/src/player.h",
+		"/home/chris/Desktop/SnakeTest/src/game.h",
+		"/home/chris/Desktop/SnakeTest/src/game.cpp",
+		"/home/chris/Desktop/SnakeTest/src/player.cpp",
+		"/home/chris/Desktop/Projects/CustomViewer/external/CMakeLists.txt",
+		"/home/chris/Desktop/Projects/CustomViewer/CMakeLists.txt",
+		"/home/chris/Desktop/SnakeTest/cmake_modules/FindSFML.cmake",
+		"/home/chris/Desktop/SnakeTest/state.h",
+		"/home/chris/Desktop/SnakeTest/SnakeTest.cpp",
+		"/home/chris/Desktop/SnakeTest/player.h",
+		"/home/chris/Desktop/SnakeTest/player.cpp",
+		"/home/chris/Desktop/SnakeTest/game.h",
+		"/home/chris/Desktop/SnakeTest/game.cpp",
+		"/home/chris/Desktop/SnakeTest/state.cpp",
+		"/home/chris/Desktop/SnakeTest/cmake_modules/LibFindMacros.cmake",
+		"/home/chris/Desktop/SnakeTest/FindSFML.cmake",
+		"/home/chris/Desktop/cp.cpp",
+		"/home/chris/Desktop/fort.f90",
+		"/home/chris/Desktop/amolqc/src/aomo_m.f",
+		"/home/chris/Desktop/amolqc/src/aos_d.f",
+		"/home/chris/Desktop/amolqc/src/vec_opt.cpp",
+		"/home/chris/Desktop/amolqc/src/vector_m.f90",
+		"/home/chris/Desktop/Uni/GitterKMC/last_tests/martin/data_cold.dat",
+		"/home/chris/Desktop/Uni/GitterKMC/data/pairCorrelation/blah.gnu",
+		"/home/chris/Desktop/Uni/GitterKMC/last_tests/martin/blah.gnu",
+		"/home/chris/Desktop/Uni/GitterKMC/output",
+		"/home/chris/Desktop/Uni/GitterKMC/src/TMMCCell.cpp",
+		"/home/chris/Desktop/Uni/GitterKMC/src/GitterKMC.cpp",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter4_alt.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter3_alt.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter2_alt.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter1_alt.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter4.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter3.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter2.tex",
+		"/home/chris/Desktop/Uni/forschungsarbeit/martin/latex/Chapters/Chapter1.tex",
+		"/home/chris/Desktop/pen_register.c",
+		"/home/chris/Desktop/Makefile",
+		"/home/chris/Downloads/ethersex/services/clock/clock.h",
+		"/home/chris/Downloads/ethersex/services/clock/clock.c",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/src/jastrow-ic_m.f90",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_gm220_opt.wf",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_gm220.out-1",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/testsuite/vmc/ethan/gm220/ethan_gm220.in",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/src/wfparameters_m.f90",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/testsuite/vmc/ethan/ic220/ethan_ic220_opt.wf",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/testsuite/vmc/ethan/ic220/ethan_ic220.out-1",
+		"/run/user/chris/gvfs/sftp:host=arbeit/home/chris/Desktop/amolqc/src/geminal_m.f90",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/amolqc/testsuite/vmc/ethan/ic220/ethan_ic220_opt.wf",
+		"/run/user/chris/gvfs/sftp:host=tcrocks/home/pezley/amolqc/testsuite/vmc/ethan/ic220/ethan_gm220.in",
+		"/home/chris/Desktop/amolqc/src/jastrow_m.f",
+		"/home/chris/Desktop/amolqc/src/mos_m.f",
+		"/home/chris/Desktop/amolqc/rules.mk",
+		"/home/chris/Desktop/amolqc/vars.mk",
+		"/home/chris/Desktop/amolqc/src/optimizeParamsVarmin1_m.f90",
+		"/home/chris/Desktop/amolqc/src/elocandpsitermsLM_m.f90",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/ic220/ethan.wf",
+		"/home/chris/Desktop/amolqc/src/jastrowparamdata_m.f90",
+		"/home/chris/Desktop/amolqc/src/jastrow-ic_m.f90",
+		"/home/chris/Desktop/amolqc/testsuite/vmc/ethan/ic220/ethan_ic220.in",
+		"/home/chris/Desktop/bot.py",
+		"/home/chris/Downloads/f3-2.2/output",
+		"/home/chris/Desktop/amolqc/src/wf_d.f90",
+		"/home/chris/Desktop/amolqc/src/rules.mk",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan_to_butan/ic444/replace/nbutane.wf",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan/sm2_in_440_to_444/ethan_sm2_in_440_to_444.in",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan/sm2_in_440_to_444/ethan.wf",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan_to_butan/ic444/replace/butan.in",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan_to_butan/ic444/opt/butan.in",
+		"/home/chris/Desktop/Uni/forschungsarbeit/luechow/jobs/ethan_to_butan/ic444/opt/nbutane.wf"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ending",
+			"whitespace",
+			"eof",
+			"last line",
+			"0x",
+			"()",
+			"void chip8::",
+			"0x",
+			"// 0x",
+			"void chip8::",
+			"break",
+			"case",
+			"sys",
+			"console",
+			"target_link",
+			"include_directories(\"${GTEST_INCLUDE_DIR}}\")\ninclude",
+			"SFML_INCLUDE_DIR",
+			".h",
+			"find_",
+			"find_path",
+			"RedBit",
+			"reg",
+			"regbit",
+			"switch",
+			"index",
+			"cp",
+			"}",
+			"{",
+			"namespace",
+			"std::",
+			"unsigned short",
+			"unsigned",
+			"int",
+			"char",
+			"unsigned short",
+			"unsigned char",
+			"std::bitset<8>",
+			"std::bitset<16>",
+			"size",
+			"unsigned short",
+			"output",
+			"write",
+			"gl",
+			"= gl",
+			"gl",
+			"0.5",
+			"cnums",
+			"nums",
+			"call orb",
+			"output",
+			"numder",
+			"call numder",
+			"calc",
+			"deriv",
+			"^[a-z0-9]+@",
+			"[a-z]+@",
+			"jastrow_varmin1",
+			"gl\\(",
+			"test",
+			"guao",
+			"call geminal",
+			"write",
+			"pen_driver",
+			"SFML",
+			"magic",
+			"magi",
+			"Magick++",
+			"include_directories",
+			"__stdcall",
+			"double",
+			"void",
+			"guao",
+			"(:,:,:)",
+			"\n  ",
+			"guyao(:,:,:)\n",
+			"(:,:,:)",
+			"guyao(:,:,:)\n",
+			"(:,:,:)",
+			"alloc",
+			"uao",
+			"genz",
+			"fink",
+			"kr",
+			"stabil",
+			"->",
+			"NTP",
+			"ntp",
+			"nt",
+			"uip_ipaddr_t",
+			"ntpd_net_init",
+			"xmt",
+			"rec",
+			"xmt",
+			"ntp_getserver",
+			"\\t",
+			"ntp_server",
+			"getvectorlen",
+			"vec",
+			"getvecle",
+			"getvec",
+			"getJastrowParamCnt",
+			"create",
+			"positive arguments required",
+			"numparams",
+			"unum =",
+			"allocate(gl",
+			"ElocAndPsiTermsLM_VxyALL",
+			"[I|i]f ([^,;.]+) was",
+			"if ([^,;.]+) was",
+			"[if|If] ([^,;.]+) was",
+			"if[ ]([^,;.]+)[ ]was",
+			"if[ ]([^,;.]+.)[ ]was",
+			"if[ ]([^,;.].)[ ]was",
+			"if[ ]([^,;.]+)[ ]was",
+			"if[ ]([^,;.]*)[ ]was",
+			"if[ ]([^,;.]+)[ ]was",
+			"if[ ]([^,;.]*)[ ]was",
+			"if[ ](.[^,;.])[ ]was",
+			"if[ ]([^\\,\\;\\.]+)[ ]was",
+			"if[ ]([^\\,\\;\\.])[ ]was",
+			"if[ ]([^\\,\\;\\.]+)[ ]was",
+			"if[ ](.[^\\,\\;\\.])[ ]was",
+			"if[ ](.[^\\,\\;\\.]+)[ ]was",
+			"if[ ](.[^\\,\\;\\.]*)[ ]was",
+			"if[ ](\\.[^,;.]*)[ ]was",
+			"if[ ](.[^,;.]*)[ ]was",
+			"if[ ](.[^\\,\\;\\.]*)[ ]was",
+			"if[ ](.[^,;\\.]*)[ ]was"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"  ",
+			"nullptr",
+			"\\t",
+			" ",
+			"//cin.get();",
+			"protected",
+			"posBuffer",
+			"latticeDim",
+			"double",
+			"energy",
+			" Euro",
+			"€",
+			"\\euro",
+			"nullptr",
+			"std::null_ptr",
+			"size()"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/instructions.cpp",
+					"settings":
+					{
+						"buffer_size": 5770,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3021,
+								3021
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2375.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/chip8.h",
+					"settings":
+					{
+						"buffer_size": 3569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3156,
+								3156
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2460.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/chris/.config/sublime-text-2/Packages/Whitespaces/Whitespaces.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 1057,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								765,
+								765
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/chris/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 13677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1024,
+								1024
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/chip8.cpp",
+					"settings":
+					{
+						"buffer_size": 1432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1431,
+								1431
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 867.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/chris/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								265,
+								265
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"aosd",
+				"aos_d.f"
+			],
+			[
+				"aos_m",
+				"aos_m.f"
+			],
+			[
+				"wfpara",
+				"wfparameters_m.f90"
+			],
+			[
+				"jastrowic",
+				"jastrow-ic_m.f90"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 156.0,
+	"status_bar_visible": true
+}
