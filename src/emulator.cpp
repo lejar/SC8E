@@ -6,6 +6,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <QMainWindow>
+
 #include "chip8.h"
 #include "res/blip.h"
 #include "qsfmlcanvas.h"
@@ -48,12 +50,12 @@ int main(int argc, char* argv[])
 
   QApplication App(argc, argv);
 
-  QFrame* MainFrame = new QFrame;
+  QMainWindow* MainFrame = new QMainWindow;
   MainFrame->setWindowTitle("SC8E");
-  MainFrame->resize(680, 360);
+  MainFrame->resize(640, 345);
   MainFrame->show();
 
-  EmulatorCanvas* SFMLView = new EmulatorCanvas(MainFrame, QPoint(20, 20), QSize(640, 320), filename);
+  EmulatorCanvas* SFMLView = new EmulatorCanvas(MainFrame, QPoint(0, 25), QSize(640, 320), filename);
   SFMLView->show();
 
   return App.exec();
