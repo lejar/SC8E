@@ -24,15 +24,19 @@ chip8::chip8() : I(0), pc(0x200), sp(0), delay_timer(0), sound_timer(0),
 
 bool chip8::loadGame(std::string filename)
 {
-  std::ifstream file(filename, std::ios::binary);
-
+  std::ifstream file(filename, std::ios::binary | std::ios::ate);
   if (!file.is_open()) return false;
 
-  auto iter = std::istreambuf_iterator<char>(file);
-  auto end = std::istreambuf_iterator<char>();
-  if (std::distance(iter, end) > 3583)
+  // Make sure the file fits inside the memory before attempting to read it
+  std::streamoff file_size = file.tellg();
+  if(file_size > static_cast<std::streamoff>(memory.size() - 512))
     return false;
-  std::copy(iter, end, memory.begin() + 512);
+
+  file.seekg(0);
+  auto start = std::istreambuf_iterator<char>(file);
+  auto end = std::istreambuf_iterator<char>();
+
+  std::copy(start, end, memory.begin() + 512);
 
   return true;
 }
