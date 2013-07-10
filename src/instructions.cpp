@@ -182,25 +182,28 @@ void chip8::DRW(std::uint16_t opcode)
   std::uint8_t x      = V[(opcode & 0x0F00) >> 8];
   std::uint8_t y      = V[(opcode & 0x00F0) >> 4];
   std::uint8_t height = (opcode & 0x000F);
-  std::uint8_t pixel;
 
   V[0xF] = 0;
   // run through each row
   for (int yline = 0; yline < height; yline++)
   {
     // graph the current pixel
-    pixel = memory[I + yline];
+    std::uint8_t pixel = memory[I + yline];
     // run through columns
     for (int xline = 0; xline < 8; xline++)
     {
       // if pixel filled
       if ((pixel & (0x80 >> xline)) != 0)
       {
+        // sprites wrap around the screen edges
+        uint pos = (x + xline) % 64 + ((y + yline) % 32) * 64;
+
         // see if same pixel in gfx is already filled
-        if (gfx[x + xline + ((y + yline) * 64)] == 1)
+        if (gfx[pos] == 1)
           V[0xF] = 1;
         // switch pixel in gfx
-        gfx[x + xline + ((y + yline) * 64)] ^= 1;
+
+        gfx[pos] ^= 1;
       }
     }
   }
