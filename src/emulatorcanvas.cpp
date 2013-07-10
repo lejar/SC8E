@@ -15,7 +15,7 @@ EmulatorCanvas::EmulatorCanvas(QWidget* Parent, const QPoint& Position, const QS
 void EmulatorCanvas::OnInit()
   {
     // graphics
-    shape.setScale(sf::Vector2<float>(10, 10));
+    shape.setSize(sf::Vector2<float>(10, 10));
     shape.setFillColor(sf::Color::Green);
 
     // sound
