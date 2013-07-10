@@ -8,6 +8,8 @@
 
 #include "chip8.h"
 #include "res/blip.h"
+#include "qsfmlcanvas.h"
+#include "emulatorcanvas.h"
 
 std::array<sf::Keyboard::Key, 16> layout{{
     sf::Keyboard::Num1,
@@ -30,72 +32,30 @@ std::array<sf::Keyboard::Key, 16> layout{{
 
 int main(int argc, char* argv[])
 {
+  /*
   // initialize chip8 module
   chip8 emu;
+  */
 
   // parse arguments
   std::string filename;
   if (argc > 1) {
     filename = argv[1];
-    if (!emu.loadGame(filename)) {
-      std::cerr << "File " << filename << " does not exist!" << std::endl;
-      return 1;
-    }
   } else {
     std::cerr << "No filename given!" << std::endl;
     return 1;
   }
 
-  // create window
-  sf::RenderWindow window(sf::VideoMode(640, 320), "YAC8E");
-  window.setFramerateLimit(120);
-  sf::RectangleShape shape(sf::Vector2<float>(10, 10));
-  shape.setFillColor(sf::Color::Green);
+  QApplication App(argc, argv);
 
-  // set up audio
-  sf::SoundBuffer buffer;
-  if (!buffer.loadFromMemory(blip.data(), blip.size()))
-    std::cerr << "Could not load audio resources, continuing without!" << std::endl;
-  sf::Sound sound;
-  sound.setBuffer(buffer);
+  QFrame* MainFrame = new QFrame;
+  MainFrame->setWindowTitle("SC8E");
+  MainFrame->resize(680, 360);
+  MainFrame->show();
 
-  while (window.isOpen()) {
-    // poll events
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            window.close();
-    }
+  EmulatorCanvas* SFMLView = new EmulatorCanvas(MainFrame, QPoint(20, 20), QSize(640, 320), filename);
+  SFMLView->show();
 
-    // get keys
-    std::array<std::uint8_t, 16> keys;
-    for (int i = 0; i < 16; i++)
-      if (sf::Keyboard::isKeyPressed(layout[i]))
-        keys[i] = 1;
-      else
-        keys[i] = 0;
-    emu.setKeys(keys);
+  return App.exec();
 
-    // do cpu cycles
-    emu.emulateCycle();
-
-    // draw
-    if (emu.drawFlag) {
-      emu.drawFlag = false;
-      window.clear(sf::Color(0,0,0,255));
-      for (int x = 0; x < 64; x++)
-        for (int y = 0; y < 32; y++)
-          if (emu.gfx[x + y*64]) {
-            shape.setPosition(x*10, y*10);
-            window.draw(shape);
-          }
-    }
-    window.display();
-
-    // audio
-    if(emu.beep)
-      sound.play();
-  }
-
-  return 0;
 }
