@@ -7,20 +7,29 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-class QSFMLCanvas;
-class chip8;
+#include <QMainWindow>
+#include <QObject>
+
+#include "qsfmlcanvas.h"
+#include "chip8.h"
 
 class EmulatorCanvas : public QSFMLCanvas
 {
+  Q_OBJECT
+
 public:
 
-  EmulatorCanvas(QWidget*, const QPoint&, const QSize&, std::string);
+  EmulatorCanvas(QMainWindow*, const QPoint&, const QSize&, std::string);
+
+public slots:
+
+  void exitProgram();
 
 private:
 
-  void OnInit() override;
+  void OnInit();
 
-  void OnUpdate() override;
+  void OnUpdate();
 
   // initialize chip8 module
   chip8 emu;
