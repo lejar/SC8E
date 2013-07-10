@@ -7,7 +7,8 @@
 
 QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& wSize, unsigned int FrameTime) :
 QWidget(Parent),
-myInitialized(false)
+myInitialized(false),
+focus(true)
 {
   // set up direct rendering
   setAttribute(Qt::WA_PaintOnScreen);
@@ -77,4 +78,13 @@ void QSFMLCanvas::OnInit()
 
 void QSFMLCanvas::OnUpdate()
 {
+}
+
+void QSFMLCanvas::focusInEvent( QFocusEvent* )
+{
+  focus = true;
+}
+void QSFMLCanvas::focusOutEvent( QFocusEvent* )
+{
+  focus = false;
 }
