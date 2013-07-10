@@ -1,7 +1,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "blip.h"
+#include "res/blip.h"
 #include "chip8.h"
 #include "qsfmlcanvas.h"
 #include "emulatorcanvas.h"
@@ -34,9 +34,11 @@ void EmulatorCanvas::OnInit()
   {
     // poll events
     sf::Event event;
-    while (sf::Window::pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
-            sf::Window::close();
+    while (this->pollEvent(event)) {
+      if (event.type == sf::Event::Closed) {
+        this->sf::RenderWindow::close();
+        return;
+      }
     }
 
     // get keys
@@ -54,12 +56,12 @@ void EmulatorCanvas::OnInit()
     // draw
     if (emu.drawFlag) {
       emu.drawFlag = false;
-      sf::RenderWindow::clear(sf::Color(0,0,0,255));
+      this->clear(sf::Color(0,0,0,255));
       for (int x = 0; x < 64; x++)
         for (int y = 0; y < 32; y++)
           if (emu.gfx[x + y*64]) {
             shape.setPosition(x*10, y*10);
-            sf::RenderWindow::draw(shape);
+            this->draw(shape);
           }
     }
 
