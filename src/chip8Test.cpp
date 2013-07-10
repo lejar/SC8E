@@ -611,13 +611,13 @@ TEST_F(chip8Test, op_0xDXYN_Wraparound)
   // sprite should have wrapped around in both X and Y direction
   std::array<std::uint8_t, 2048> expected {{ 0 }};
 
-#define p(x,y) expected[x + y * 64] = 1;
-  p(62, 30); p(63, 30); p(0, 30); p(1, 30);
-  p(62, 31);
-  p(62, 0 ); p(63, 0 ); p(0, 0 ); p(1, 0 );
-  p(62, 1 );
-  p(62, 2 ); p(63, 2 ); p(0, 2 ); p(1, 2 );
-#undef p
+#define X(x,y) expected[x + y * 64] = 1;
+  X(62, 30); X(63, 30); X(0, 30); X(1, 30);
+  X(62, 31);
+  X(62, 0 ); X(63, 0 ); X(0, 0 ); X(1, 0 );
+  X(62, 1 );
+  X(62, 2 ); X(63, 2 ); X(0, 2 ); X(1, 2 );
+#undef X
 
   ASSERT_EQ(expected, emu.gfx);
 }
@@ -651,13 +651,13 @@ TEST_F(chip8Test, op_DXYN_Toggle)
 
   // sprite should have wrapped around in both X and Y direction
   std::array<std::uint8_t, 2048> expected_first {{ 0 }};
-#define p(x,y) expected_first[x + y * 64] = 1;
-  p(0, 0); p(1, 0); p(2, 0); p(3 ,0);
-  p(0, 1);                   p(3 ,1);
-  p(0, 2); p(1, 2); p(2, 2); p(3 ,2);
-  p(0, 3);                   p(3 ,3);
-  p(0, 4); p(1, 4); p(2, 4); p(3 ,4);
-#undef p
+#define X(x,y) expected_first[x + y * 64] = 1;
+  X(0, 0); X(1, 0); X(2, 0); X(3 ,0);
+  X(0, 1);                   X(3 ,1);
+  X(0, 2); X(1, 2); X(2, 2); X(3 ,2);
+  X(0, 3);                   X(3 ,3);
+  X(0, 4); X(1, 4); X(2, 4); X(3 ,4);
+#undef X
 
   ASSERT_EQ(expected_first, emu.gfx);
 
@@ -673,15 +673,15 @@ TEST_F(chip8Test, op_DXYN_Toggle)
   ASSERT_EQ(1, emu.V[0xF]);
 
   std::array<std::uint8_t, 2048> expected_second(expected_first);
-#define p(x,y) expected_second[x + y * 64] = 1;
-#define q(x,y) expected_second[x + y * 64] = 0;
-  q(2, 2); q(3, 2); p(4, 2); p(5, 2);
-  p(2, 3);                   p(5, 3);
-  q(2, 4); q(3, 4); p(4, 4); p(5, 4);
-                             p(5, 5);
-  p(2, 6); p(3, 6); p(4, 6); p(5, 6);
-#undef p
-#undef q
+#define X(x,y) expected_second[x + y * 64] = 1;
+#define _(x,y) expected_second[x + y * 64] = 0;
+  _(2, 2); _(3, 2); X(4, 2); X(5, 2);
+  X(2, 3);                   X(5, 3);
+  _(2, 4); _(3, 4); X(4, 4); X(5, 4);
+                             X(5, 5);
+  X(2, 6); X(3, 6); X(4, 6); X(5, 6);
+#undef X
+#undef _
 
   ASSERT_EQ(expected_second, emu.gfx);
 }
