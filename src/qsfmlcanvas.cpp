@@ -1,9 +1,9 @@
-#ifdef Q_WS_X11
-  #include <Qt/qx11info_x11.h>
-  #include <X11/Xlib.h>
-#endif
-
 #include "qsfmlcanvas.h"
+
+#ifdef Q_WS_X11
+#include <QX11Info>
+#include <X11/Xlib.h>
+#endif
 
 QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& wSize, unsigned int FrameTime) :
 QWidget(Parent),
@@ -29,18 +29,20 @@ QSFMLCanvas::~QSFMLCanvas()
 {
 }
 
-#include <iostream>
 void QSFMLCanvas::showEvent(QShowEvent*)
 {
   if (myInitialized) return;
 
   // with X11, commands need to be flushed to be sent to the server so SFML will update
-  #ifdef Q_WS_X11
-    //XFlush(QX11Info::display());
-  #endif
+#ifdef Q_WS_X11
+  XFlush(QX11Info::display());
+#endif
 
   // SFML window with widget handle
-  sf::RenderWindow::create(winId());
+  // the initialization is deferred to the showEvent handler, so that the
+  // context is created in the correct thread
+  this->sf::RenderWindow::create(winId());
+  this->sf::RenderTarget::initialize();
 
   // initialize some stuff after construction
   OnInit();
@@ -55,11 +57,13 @@ void QSFMLCanvas::showEvent(QShowEvent*)
 QPaintEngine* QSFMLCanvas::paintEngine() const
 {
   // let Qt know we're not using its paint engine
-  return 0;
+  return nullptr;
 }
 
 void QSFMLCanvas::paintEvent(QPaintEvent*)
 {
+  // ensure the SFML window is active for the current thread
+  this->setActive(true);
   // update sfml
   OnUpdate();
 

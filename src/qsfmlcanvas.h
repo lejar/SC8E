@@ -16,9 +16,10 @@ public:
 private:
   virtual void OnInit();
   virtual void OnUpdate();
-  virtual void showEvent(QShowEvent*);
-  virtual void paintEvent(QPaintEvent*);
-  virtual QPaintEngine* paintEngine() const;
+
+  void showEvent(QShowEvent*);
+  void paintEvent(QPaintEvent*);
+  QPaintEngine* paintEngine() const;
 
   QTimer myTimer;
   bool myInitialized;

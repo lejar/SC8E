@@ -18,9 +18,9 @@ public:
 
 private:
 
-  void OnInit();
+  void OnInit() override;
 
-  void OnUpdate();
+  void OnUpdate() override;
 
   // initialize chip8 module
   chip8 emu;
