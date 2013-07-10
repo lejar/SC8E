@@ -7,6 +7,11 @@
 #include <map>
 #include <string>
 
+class chip8;
+
+typedef void (chip8::*OpcodeWrapper)(std::uint16_t);
+typedef void Opcode(std::uint16_t);
+
 class chip8
 {
 public:
@@ -119,72 +124,72 @@ public:
   }};
 
   // function list
-  std::array<std::map<std::uint16_t, std::function<void(std::uint16_t)>>, 16> opcodes{{
+  std::array<std::map<std::uint16_t, OpcodeWrapper>, 16> opcodes{{
     { // 0x00..
-      {0x0000, std::bind(&chip8::CLS,     this, std::placeholders::_1)},
-      {0x000E, std::bind(&chip8::RET,     this, std::placeholders::_1)}
+      {0x0000, &chip8::CLS},
+      {0x000E, &chip8::RET}
     },
     { // 0x1000
-      {0x1000, std::bind(&chip8::JP_A,    this, std::placeholders::_1)}
+      {0x1000, &chip8::JP_A}
     },
     { // 0x2000
-      {0x2000, std::bind(&chip8::CALL,    this, std::placeholders::_1)}
+      {0x2000, &chip8::CALL}
     },
     { // 0x3000
-      {0x3000, std::bind(&chip8::SE_VB,   this, std::placeholders::_1)}
+      {0x3000, &chip8::SE_VB}
     },
     { // 0x4000
-      {0x4000, std::bind(&chip8::SNE_VB,  this, std::placeholders::_1)}
+      {0x4000, &chip8::SNE_VB}
     },
     { // 0x5000
-      {0x5000, std::bind(&chip8::SE_VV,   this, std::placeholders::_1)}
+      {0x5000, &chip8::SE_VV}
     },
     { // 0x6000
-      {0x6000, std::bind(&chip8::LD_VB,   this, std::placeholders::_1)}
+      {0x6000, &chip8::LD_VB}
     },
     { // 0x7000
-      {0x7000, std::bind(&chip8::ADD_VB,  this, std::placeholders::_1)}
+      {0x7000, &chip8::ADD_VB}
     },
     { // 0x800.
-      {0x0000, std::bind(&chip8::LD_VV,   this, std::placeholders::_1)},
-      {0x0001, std::bind(&chip8::OR,      this, std::placeholders::_1)},
-      {0x0002, std::bind(&chip8::AND,     this, std::placeholders::_1)},
-      {0x0003, std::bind(&chip8::XOR,     this, std::placeholders::_1)},
-      {0x0004, std::bind(&chip8::ADD_VV,  this, std::placeholders::_1)},
-      {0x0005, std::bind(&chip8::SUB_VV,  this, std::placeholders::_1)},
-      {0x0006, std::bind(&chip8::SHR,     this, std::placeholders::_1)},
-      {0x0007, std::bind(&chip8::SUBN,    this, std::placeholders::_1)},
-      {0x000E, std::bind(&chip8::SHL,     this, std::placeholders::_1)}
+      {0x0000, &chip8::LD_VV},
+      {0x0001, &chip8::OR},
+      {0x0002, &chip8::AND},
+      {0x0003, &chip8::XOR},
+      {0x0004, &chip8::ADD_VV},
+      {0x0005, &chip8::SUB_VV},
+      {0x0006, &chip8::SHR},
+      {0x0007, &chip8::SUBN},
+      {0x000E, &chip8::SHL}
     },
     { // 0x9000
-      {0x9000, std::bind(&chip8::SNE_VV,  this, std::placeholders::_1)}
+      {0x9000, &chip8::SNE_VV}
     },
     { // 0xA000
-      {0xA000, std::bind(&chip8::LD_IA,   this, std::placeholders::_1)}
+      {0xA000, &chip8::LD_IA}
     },
     { // 0xB000
-      {0xB000, std::bind(&chip8::JP_VA,   this, std::placeholders::_1)}
+      {0xB000, &chip8::JP_VA}
     },
     { // 0xC000
-      {0xC000, std::bind(&chip8::RND,     this, std::placeholders::_1)}
+      {0xC000, &chip8::RND}
     },
     { // 0xD000
-      {0xD000, std::bind(&chip8::DRW,     this, std::placeholders::_1)}
+      {0xD000, &chip8::DRW}
     },
     { // 0xE0..
-      {0x000E, std::bind(&chip8::SKP,     this, std::placeholders::_1)},
-      {0x0001, std::bind(&chip8::SKNP,    this, std::placeholders::_1)}
+      {0x000E, &chip8::SKP},
+      {0x0001, &chip8::SKNP}
     },
     { // 0xF0..
-      {0x0007, std::bind(&chip8::LD_VDT,  this, std::placeholders::_1)},
-      {0x000A, std::bind(&chip8::LD_VK,   this, std::placeholders::_1)},
-      {0x0015, std::bind(&chip8::LD_DTV,  this, std::placeholders::_1)},
-      {0x0018, std::bind(&chip8::LD_STV,  this, std::placeholders::_1)},
-      {0x001E, std::bind(&chip8::ADD_IV,  this, std::placeholders::_1)},
-      {0x0029, std::bind(&chip8::LD_FV,   this, std::placeholders::_1)},
-      {0x0033, std::bind(&chip8::LD_BV,   this, std::placeholders::_1)},
-      {0x0055, std::bind(&chip8::LD_IV,   this, std::placeholders::_1)},
-      {0x0065, std::bind(&chip8::LD_VI,   this, std::placeholders::_1)}
+      {0x0007, &chip8::LD_VDT},
+      {0x000A, &chip8::LD_VK},
+      {0x0015, &chip8::LD_DTV},
+      {0x0018, &chip8::LD_STV},
+      {0x001E, &chip8::ADD_IV},
+      {0x0029, &chip8::LD_FV},
+      {0x0033, &chip8::LD_BV},
+      {0x0055, &chip8::LD_IV},
+      {0x0065, &chip8::LD_VI}
     }
   }};
 };
