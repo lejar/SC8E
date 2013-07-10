@@ -15,9 +15,6 @@ include_directories("${PROJECT_BINARY_DIR}")
 #external libraries
 #Qt
 FIND_PACKAGE(Qt4 REQUIRED)
-QT4_WRAP_CPP(HEADERS_MOC
-              src/qsfmlcanvas.h
-              src/emulatorcanvas.h)
 INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 
