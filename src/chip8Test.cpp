@@ -578,19 +578,112 @@ TEST_F(chip8Test, op_0xDXYN)
 
   // check and see if gfx is not empty
   std::array<std::uint8_t, 2048> expected{{0}};
-  expected[6 + 7*64] = 1;
-  expected[7 + 7*64] = 1;
-  expected[8 + 7*64] = 1;
-  expected[9 + 7*64] = 1;
-  expected[9 + 8*64] = 1;
-  expected[8 + 9*64] = 1;
-  expected[7 + 10*64] = 1;
-  expected[7 + 11*64] = 1;
-
-  ASSERT_EQ(expected, emu.gfx);
+#define p(x,y) expected[x + y * 64] = 1
+  p(6, 7); p(7, 7 ); p(8, 7); p(9, 7);
+                              p(9, 8);
+                     p(8, 9);
+           p(7, 10);
+           p(7, 11);
+#undef p
 
   // check that pc was incremented
   ASSERT_EQ(514, emu.pc);
+}
+
+TEST_F(chip8Test, op_0xDXYN_Wraparound)
+{
+  // draw 5 bytes to (V2,V3) = (62,30)
+  emu.memory[512]     = 0xD2;
+  emu.memory[512 + 1] = 0x35;
+  emu.V[0x2] = 62;
+  emu.V[0x3] = 30;
+
+  // set memory to sprite for "E"
+  emu.I = 0xA30;
+  for(unsigned int i = 0; i < 5; ++i)
+    emu.memory[0xA30 + i] = emu.memory[0xE * 5 + i];
+
+  emu.emulateCycle();
+
+  ASSERT_EQ(true, emu.drawFlag);
+  ASSERT_EQ(514, emu.pc);
+
+  // sprite should have wrapped around in both X and Y direction
+  std::array<std::uint8_t, 2048> expected {{ 0 }};
+
+#define p(x,y) expected[x + y * 64] = 1;
+  p(62, 30); p(63, 30); p(0, 30); p(1, 30);
+  p(62, 31);
+  p(62, 0 ); p(63, 0 ); p(0, 0 ); p(1, 0 );
+  p(62, 1 );
+  p(62, 2 ); p(63, 2 ); p(0, 2 ); p(1, 2 );
+#undef p
+
+  ASSERT_EQ(expected, emu.gfx);
+}
+
+TEST_F(chip8Test, op_DXYN_Toggle)
+{
+  // draw 5 bytes to (V2,V3) = (0,0) and (V4,V5) = (2,2)
+  emu.memory[512]     = 0xD2;
+  emu.memory[512 + 1] = 0x35;
+  emu.memory[512 + 2] = 0xD4;
+  emu.memory[512 + 3] = 0x45;
+  emu.V[0x2] = 0;
+  emu.V[0x3] = 0;
+  emu.V[0x4] = 2;
+  emu.V[0x5] = 2;
+
+  // set memory to sprites for 8 and 9
+  emu.I = 0xA30;
+  for(unsigned int i = 0; i < 10; ++i)
+    emu.memory[0xA30 + i] = emu.memory[0x8 * 5 + i];
+
+  // draw the 8
+  emu.emulateCycle();
+
+  ASSERT_EQ(true, emu.drawFlag);
+  ASSERT_EQ(514, emu.pc);
+  // I shouldn't be changed
+  ASSERT_EQ(0xA30, emu.I);
+  // no pixel should've been overwritten
+  ASSERT_EQ(0, emu.V[0xF]);
+
+  // sprite should have wrapped around in both X and Y direction
+  std::array<std::uint8_t, 2048> expected_first {{ 0 }};
+#define p(x,y) expected_first[x + y * 64] = 1;
+  p(0, 0); p(1, 0); p(2, 0); p(3 ,0);
+  p(0, 1);                   p(3 ,1);
+  p(0, 2); p(1, 2); p(2, 2); p(3 ,2);
+  p(0, 3);                   p(3 ,3);
+  p(0, 4); p(1, 4); p(2, 4); p(3 ,4);
+#undef p
+
+  ASSERT_EQ(expected_first, emu.gfx);
+
+  // now draw the 9 - since it's immediately behind the 8 in memory, we have
+  // to change I to point at it
+  emu.I = 0xA35;
+  emu.emulateCycle();
+
+  ASSERT_EQ(true, emu.drawFlag);
+  ASSERT_EQ(516, emu.pc);
+  ASSERT_EQ(0xA35, emu.I);
+  // part of the 9 should've overwritten part of the 8
+  ASSERT_EQ(1, emu.V[0xF]);
+
+  std::array<std::uint8_t, 2048> expected_second(expected_first);
+#define p(x,y) expected_second[x + y * 64] = 1;
+#define q(x,y) expected_second[x + y * 64] = 0;
+  q(2, 2); q(3, 2); p(4, 2); p(5, 2);
+  p(2, 3);                   p(5, 3);
+  q(2, 4); q(3, 4); p(4, 4); p(5, 4);
+                             p(5, 5);
+  p(2, 6); p(3, 6); p(4, 6); p(5, 6);
+#undef p
+#undef q
+
+  ASSERT_EQ(expected_second, emu.gfx);
 }
 
 TEST_F(chip8Test, op_EX9E)
