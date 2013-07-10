@@ -44,7 +44,8 @@ void chip8::emulateCycle()
 
   // handle opcode
   std::uint16_t a = (opcode & 0xF000) >> 12;
-  opcodes[a][(opcode & masks[a])](opcode);
+  OpcodeWrapper fn = this->opcodes[a][(opcode & masks[a])];
+  (this->*fn)(opcode);
 
   // handle sound timers
   if (delay_timer > 0)
