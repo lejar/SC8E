@@ -21,7 +21,8 @@ void EmulatorCanvas::OnInit()
     // sound
     if (!buffer.loadFromMemory(blip.data(), blip.size()))
       std::cerr << "Could not load audio resources, continuing without!" << std::endl;
-    sound.setBuffer(buffer);
+    else
+      sound.setBuffer(buffer);
 
     // rom data
     if (!emu.loadGame(filename)) {
