@@ -5,11 +5,15 @@ include_directories(${CMAKE_SOURCE_DIR}/src)
 
 enable_testing()
 
-add_custom_target(test COMMAND ${CMAKE_CTEST_COMMAND} WORKING_DIRECTORY ${CURRENT_BINARY_DIR})
+if(auto_test)
+  set(AUTO_TEST "ALL")
+endif()
+
+add_custom_target(test ${AUTO_TEST} COMMAND ${CMAKE_CTEST_COMMAND} WORKING_DIRECTORY ${CURRENT_BINARY_DIR})
 add_custom_target(build_tests WORKING_DIRECTORY ${CURRENT_BINARY_DIR})
 add_dependencies(test build_tests)
 
-add_executable(Chip8Test
+add_executable(Chip8Test EXCLUDE_FROM_ALL
   opcodes.cpp
   ${CMAKE_SOURCE_DIR}/src/instructions.cpp
   ${CMAKE_SOURCE_DIR}/src/chip8.cpp
@@ -17,9 +21,3 @@ add_executable(Chip8Test
 target_link_libraries(Chip8Test gtest_main)
 add_test(Chip8Test Chip8Test)
 add_dependencies(build_tests Chip8Test)
-
-if (auto_test)
-  add_custom_target(tests ALL ctest DEPENDS Chip8Test)
-else()
-  add_custom_target(tests ctest DEPENDS Chip8Test)
-endif()
