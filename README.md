@@ -15,7 +15,7 @@ make
 To build and run the unit tests:
 
 ```
-make tests
+make test
 ```
 
 When running `cmake` with an additional `-Dtest=ON` parameter, the tests are
