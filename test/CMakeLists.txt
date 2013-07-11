@@ -18,7 +18,7 @@ target_link_libraries(Chip8Test gtest_main)
 add_test(Chip8Test Chip8Test)
 add_dependencies(build_tests Chip8Test)
 
-if (test)
+if (auto_test)
   add_custom_target(tests ALL ctest DEPENDS Chip8Test)
 else()
   add_custom_target(tests ctest DEPENDS Chip8Test)
