@@ -1,13 +1,5 @@
 #include "chip8.h"
 
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <iterator>
-#include <ios>
-#include <string>
-
 // 0x00E0 clears the screen
 void chip8::CLS(std::uint16_t)
 {

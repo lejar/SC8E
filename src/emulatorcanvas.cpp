@@ -1,24 +1,19 @@
+#include "emulatorcanvas.h"
+
 #include <cstdint>
 #include <iostream>
 
 #include "res/blip.h"
-#include "chip8.h"
-#include "qsfmlcanvas.h"
-#include "emulatorcanvas.h"
 
-EmulatorCanvas::EmulatorCanvas(QMainWindow* Parent, const QPoint& Position, const QSize& wSize, std::string filename) :
-  QSFMLCanvas(Parent, Position, wSize),
-  filename(filename)
+EmulatorCanvas::EmulatorCanvas(QWidget* Parent) :
+  QSFMLCanvas(Parent)
 {
-  this->menuBar = new EmulatorMenu(this);
+}
 
-  Parent->setMenuBar(this->menuBar);
-  // auto fileoption = Parent->menuBar()->addMenu("&File");
-
-  // auto newAct = new QAction(tr("&Exit"), this);
-  // newAct->setStatusTip(tr("Exits the emulator"));
-  // connect(newAct, SIGNAL(triggered()), this, SLOT(exitProgram()));
-  // fileoption->addAction(newAct);
+bool EmulatorCanvas::loadFile(std::string filename)
+{
+  this->filename = filename;
+  return emu.loadGame(filename);
 }
 
 void EmulatorCanvas::OnInit()
@@ -32,21 +27,15 @@ void EmulatorCanvas::OnInit()
     std::cerr << "Could not load audio resources, continuing without!" << std::endl;
   else
     sound.setBuffer(buffer);
-
-  // rom data
-  if (!emu.loadGame(filename)) {
-    std::cerr << "File " << filename << " does not exist!" << std::endl;
-    //return 1;
-  }
 }
 
 void EmulatorCanvas::OnUpdate()
 {
   // poll events
   sf::Event event;
-  while (this->pollEvent(event)) {
+  while (render.pollEvent(event)) {
     if (event.type == sf::Event::Closed) {
-      this->sf::RenderWindow::close();
+      render.sf::RenderWindow::close();
       return;
     }
   }
@@ -67,13 +56,17 @@ void EmulatorCanvas::OnUpdate()
   // draw
   if (emu.drawFlag) {
     emu.drawFlag = false;
-    this->clear(sf::Color(0,0,0,255));
-    for (int x = 0; x < 64; x++)
-      for (int y = 0; y < 32; y++)
+
+    render.clear(sf::Color(0,0,0,255));
+
+    for (int x = 0; x < 64; x++) {
+      for (int y = 0; y < 32; y++) {
         if (emu.gfx[x + y*64]) {
           shape.setPosition(x*10, y*10);
-          this->draw(shape);
+          render.draw(shape);
         }
+      }
+    }
   }
 
   // audio
