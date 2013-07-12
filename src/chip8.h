@@ -42,7 +42,6 @@ protected:
   std::array<std::uint8_t,  4096>   memory;
   std::array<std::uint8_t,  16>     V;
 
-
   // input variables
   std::array<std::uint8_t, 16> key;
 

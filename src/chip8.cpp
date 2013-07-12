@@ -10,18 +10,17 @@
 
 chip8::chip8() :
   drawFlag(true),
+  gfx({{}}),
   I(0),
   pc(0x200),
   sp(0),
   delay_timer(0),
-  sound_timer(0)
+  sound_timer(0),
+  stack({{}}),
+  memory({{}}),
+  V({{}}),
+  key({{}})
 {
-  std::fill(gfx.begin(),    gfx.end(),    0);
-  std::fill(stack.begin(),  stack.end(),  0);
-  std::fill(V.begin(),      V.end(),      0);
-  std::fill(memory.begin(), memory.end(), 0);
-  std::fill(key.begin(),    key.end(),    0);
-
   std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
 
   std::srand(std::time(0));
