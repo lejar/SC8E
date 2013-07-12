@@ -5,10 +5,11 @@
 #include <X11/Xlib.h>
 #endif
 
-QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& wSize, unsigned int FrameTime) :
-QWidget(Parent),
-myInitialized(false),
-focus(true)
+#include <iostream>
+QSFMLCanvas::QSFMLCanvas(QWidget* Parent, unsigned int FrameTime) :
+  QWidget(Parent),
+  focus(true),
+  myInitialized(false)
 {
   // set up direct rendering
   setAttribute(Qt::WA_PaintOnScreen);
@@ -17,10 +18,6 @@ focus(true)
 
   // enable keyboard events to be received
   setFocusPolicy(Qt::StrongFocus);
-
-  // set up window variables
-  move(Position);
-  resize(wSize);
 
   // set up timer
   myTimer.setInterval(FrameTime);
@@ -42,8 +39,7 @@ void QSFMLCanvas::showEvent(QShowEvent*)
   // SFML window with widget handle
   // the initialization is deferred to the showEvent handler, so that the
   // context is created in the correct thread
-  this->sf::RenderWindow::create(winId());
-  this->sf::RenderTarget::initialize();
+  render.create(winId());
 
   // initialize some stuff after construction
   OnInit();
@@ -64,12 +60,12 @@ QPaintEngine* QSFMLCanvas::paintEngine() const
 void QSFMLCanvas::paintEvent(QPaintEvent*)
 {
   // ensure the SFML window is active for the current thread
-  this->setActive(true);
+  render.setActive(true);
   // update sfml
   OnUpdate();
 
   // display screen
-  this->display();
+  render.display();
 }
 
 void QSFMLCanvas::OnInit()
@@ -80,11 +76,11 @@ void QSFMLCanvas::OnUpdate()
 {
 }
 
-void QSFMLCanvas::focusInEvent( QFocusEvent* )
+void QSFMLCanvas::focusInEvent(QFocusEvent*)
 {
   focus = true;
 }
-void QSFMLCanvas::focusOutEvent( QFocusEvent* )
+void QSFMLCanvas::focusOutEvent(QFocusEvent*)
 {
   focus = false;
 }

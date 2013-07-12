@@ -1,18 +1,21 @@
 #ifndef QSFMLCANVAS_H
 #define QSFMLCANVAS_H
 
+#include <QFocusEvent>
+#include <QPaintEngine>
+#include <QTimer>
+#include <QWidget>
 #include <SFML/Graphics.hpp>
-#include <Qt/qwidget.h>
-#include <Qt/qtimer.h>
-#include <Qt/qframe.h>
-#include <Qt/qapplication.h>
-#include <Qt/qevent.h>
 
-class QSFMLCanvas : public QWidget, public sf::RenderWindow
+class QSFMLCanvas : public QWidget
 {
 public:
-  QSFMLCanvas(QWidget*, const QPoint&, const QSize&, unsigned int = 5);
+  QSFMLCanvas(QWidget*, unsigned int = 5);
   virtual ~QSFMLCanvas();
+
+protected:
+  bool focus;
+  sf::RenderWindow render;
 
 private:
   virtual void OnInit();
@@ -22,14 +25,11 @@ private:
   void paintEvent(QPaintEvent*);
   QPaintEngine* paintEngine() const;
 
-  virtual void focusInEvent( QFocusEvent* );
-  virtual void focusOutEvent( QFocusEvent* );
+  virtual void focusInEvent(QFocusEvent*);
+  virtual void focusOutEvent(QFocusEvent*);
 
   QTimer myTimer;
   bool myInitialized;
-
-protected:
-  bool focus;
 };
 
 #endif /* QSFMLCANVAS_H */
