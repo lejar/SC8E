@@ -15,7 +15,7 @@
 #include "emulatormenu.h"
 #include "chip8.h"
 
-class EmulatorCanvas : public QSFMLCanvas, private Ui_MenuBar
+class EmulatorCanvas : public QSFMLCanvas
 {
 public:
 
