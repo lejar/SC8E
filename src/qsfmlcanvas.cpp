@@ -24,6 +24,7 @@ QSFMLCanvas::QSFMLCanvas(QWidget* Parent, unsigned int FrameTime) :
 
 QSFMLCanvas::~QSFMLCanvas()
 {
+  render.close();
 }
 
 void QSFMLCanvas::showEvent(QShowEvent*)

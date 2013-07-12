@@ -31,14 +31,6 @@ void EmulatorCanvas::OnInit()
 
 void EmulatorCanvas::OnUpdate()
 {
-  // poll events
-  sf::Event event;
-  while (render.pollEvent(event)) {
-    if (event.type == sf::Event::Closed) {
-      render.close();
-      return;
-    }
-  }
 
   // get keys
   std::array<std::uint8_t, 16> keys;
