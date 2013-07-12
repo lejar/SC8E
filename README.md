@@ -22,3 +22,9 @@ When running `cmake` with an additional `-Dtest=ON` parameter, the tests are
 built and run automatically whenever `make` is run.
 
 Enjoy!
+
+License
+=======
+
+Licensed under MIT/X11 license, see [LICENSE](https://github.com/lejar/SC8E/blob/master/LICENSE).
+
