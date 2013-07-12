@@ -46,7 +46,7 @@
   <customwidget>
    <class>EmulatorCanvas</class>
    <extends>QSFMLCanvas</extends>
-   <header>../src/emulatorcanvas.h</header>
+   <header>src/emulatorcanvas.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

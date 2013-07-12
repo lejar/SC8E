@@ -11,7 +11,7 @@ endif()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -pedantic")
 
-include_directories("${PROJECT_BINARY_DIR}")
+include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 # External libraries
 # Qt
