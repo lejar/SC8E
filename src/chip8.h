@@ -15,29 +15,6 @@ typedef void Opcode(std::uint16_t);
 class chip8
 {
 public:
-  // cpu variables
-  std::uint16_t I;
-  std::uint16_t pc;
-  std::uint16_t sp;
-  std::array<std::uint16_t, 16>     stack;
-  std::array<std::uint8_t,  4096>   memory;
-  std::array<std::uint8_t,  16>     V;
-
-
-  // timers
-  std::uint8_t delay_timer;
-  std::uint8_t sound_timer;
-
-  // graphics variables
-  std::array<std::uint8_t, (64 * 32)> gfx;
-  bool drawFlag;
-
-  // audio variable
-  bool beep;
-
-  // input variables
-  std::array<std::uint8_t, 16> key;
-
   // functions
   chip8();
   bool loadGame(std::string);
@@ -45,6 +22,31 @@ public:
   void setKeys(std::array<std::uint8_t, 16>);
   void debugRender();
 
+  // screen was redrawn
+  bool drawFlag;
+  // graphics memory
+  std::array<std::uint8_t, (64 * 32)> gfx;
+
+  // audio variable
+  bool beep;
+
+protected:
+  // cpu variables
+  std::uint16_t I;
+  std::uint16_t pc;
+  std::uint16_t sp;
+  // timers
+  std::uint8_t delay_timer;
+  std::uint8_t sound_timer;
+  std::array<std::uint16_t, 16>     stack;
+  std::array<std::uint8_t,  4096>   memory;
+  std::array<std::uint8_t,  16>     V;
+
+
+  // input variables
+  std::array<std::uint8_t, 16> key;
+
+private:
   // opcodes
   void CLS    (std::uint16_t);
   void RET    (std::uint16_t);

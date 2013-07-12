@@ -8,8 +8,13 @@
 #include <ios>
 #include <string>
 
-chip8::chip8() : I(0), pc(0x200), sp(0), delay_timer(0), sound_timer(0),
-  drawFlag(true)
+chip8::chip8() :
+  drawFlag(true),
+  I(0),
+  pc(0x200),
+  sp(0),
+  delay_timer(0),
+  sound_timer(0)
 {
   std::fill(gfx.begin(),    gfx.end(),    0);
   std::fill(stack.begin(),  stack.end(),  0);
