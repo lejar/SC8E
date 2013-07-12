@@ -36,10 +36,7 @@ void EmulatorCanvas::OnUpdate()
   // get keys
   std::array<std::uint8_t, 16> keys;
   for (int i = 0; i < 16; i++)
-    if (sf::Keyboard::isKeyPressed(layout[i]))
-      keys[i] = 1;
-    else
-      keys[i] = 0;
+    keys[i] = sf::Keyboard::isKeyPressed(layout[i]);
   emu.setKeys(keys);
 
   // do cpu cycles
