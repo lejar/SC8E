@@ -29,6 +29,10 @@
 				{
 					"name": "Clean",
 					"cmd": ["make", "-C", "build", "clean"]
+				},
+				{
+					"name": "Test",
+					"cmd": ["make", "-C", "build", "test"]
 				}
 			]
 		}
