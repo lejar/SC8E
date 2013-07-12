@@ -35,7 +35,7 @@ void EmulatorCanvas::OnUpdate()
   sf::Event event;
   while (render.pollEvent(event)) {
     if (event.type == sf::Event::Closed) {
-      render.sf::RenderWindow::close();
+      render.close();
       return;
     }
   }
