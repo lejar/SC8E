@@ -4,24 +4,21 @@
 #include <array>
 #include <string>
 
+#include <QWidget>
+
 #include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <QMainWindow>
-#include <QObject>
-#include <QMenuBar>
-
 #include "qsfmlcanvas.h"
-#include "emulatormenu.h"
 #include "chip8.h"
 
 class EmulatorCanvas : public QSFMLCanvas
 {
 public:
+  EmulatorCanvas(QWidget*);
 
-  EmulatorCanvas(QMainWindow*, const QPoint&, const QSize&, std::string);
-
-  EmulatorMenu* menuBar;
+  bool loadFile(std::string);
 
   // initialize chip8 module
   chip8 emu;

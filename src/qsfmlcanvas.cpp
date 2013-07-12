@@ -6,7 +6,7 @@
 #endif
 
 #include <iostream>
-QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& wSize, unsigned int FrameTime) :
+QSFMLCanvas::QSFMLCanvas(QWidget* Parent, unsigned int FrameTime) :
   QWidget(Parent),
   focus(true),
   myInitialized(false)
@@ -18,10 +18,6 @@ QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& w
 
   // enable keyboard events to be received
   setFocusPolicy(Qt::StrongFocus);
-
-  // set up window variables
-  move(Position);
-  resize(wSize);
 
   // set up timer
   myTimer.setInterval(FrameTime);

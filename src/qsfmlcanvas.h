@@ -10,7 +10,7 @@
 class QSFMLCanvas : public QWidget
 {
 public:
-  QSFMLCanvas(QWidget*, const QPoint&, const QSize&, unsigned int = 5);
+  QSFMLCanvas(QWidget*, unsigned int = 5);
   virtual ~QSFMLCanvas();
 
 protected:
