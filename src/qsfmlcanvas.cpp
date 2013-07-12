@@ -5,10 +5,11 @@
 #include <X11/Xlib.h>
 #endif
 
+#include <iostream>
 QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& wSize, unsigned int FrameTime) :
-QWidget(Parent),
-myInitialized(false),
-focus(true)
+  QWidget(Parent),
+  focus(true),
+  myInitialized(false)
 {
   // set up direct rendering
   setAttribute(Qt::WA_PaintOnScreen);
@@ -79,11 +80,11 @@ void QSFMLCanvas::OnUpdate()
 {
 }
 
-void QSFMLCanvas::focusInEvent( QFocusEvent* )
+void QSFMLCanvas::focusInEvent(QFocusEvent*)
 {
   focus = true;
 }
-void QSFMLCanvas::focusOutEvent( QFocusEvent* )
+void QSFMLCanvas::focusOutEvent(QFocusEvent*)
 {
   focus = false;
 }

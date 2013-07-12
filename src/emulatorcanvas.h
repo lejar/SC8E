@@ -27,11 +27,8 @@ public:
   chip8 emu;
 
 private:
-
   void OnInit();
-
   void OnUpdate();
-
 
   // "sprite" for drawing pixels
   sf::RectangleShape shape;

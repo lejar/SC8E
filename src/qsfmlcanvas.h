@@ -25,8 +25,8 @@ private:
   void paintEvent(QPaintEvent*);
   QPaintEngine* paintEngine() const;
 
-  virtual void focusInEvent( QFocusEvent* );
-  virtual void focusOutEvent( QFocusEvent* );
+  virtual void focusInEvent(QFocusEvent*);
+  virtual void focusOutEvent(QFocusEvent*);
 
   QTimer myTimer;
   bool myInitialized;
