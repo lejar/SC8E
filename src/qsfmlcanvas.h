@@ -1,12 +1,11 @@
 #ifndef QSFMLCANVAS_H
 #define QSFMLCANVAS_H
 
+#include <QFocusEvent>
+#include <QPaintEngine>
+#include <QTimer>
+#include <QWidget>
 #include <SFML/Graphics.hpp>
-#include <Qt/qwidget.h>
-#include <Qt/qtimer.h>
-#include <Qt/qframe.h>
-#include <Qt/qapplication.h>
-#include <Qt/qevent.h>
 
 class QSFMLCanvas : public QWidget, public sf::RenderWindow
 {
