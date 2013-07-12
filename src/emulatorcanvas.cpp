@@ -1,8 +1,6 @@
 #include <cstdint>
 #include <iostream>
 
-#include <QMenuBar>
-
 #include "res/blip.h"
 #include "chip8.h"
 #include "qsfmlcanvas.h"
@@ -12,12 +10,15 @@ EmulatorCanvas::EmulatorCanvas(QMainWindow* Parent, const QPoint& Position, cons
   QSFMLCanvas(Parent, Position, wSize),
   filename(filename)
 {
-  auto fileoption = Parent->menuBar()->addMenu("&File");
+  this->menuBar = new EmulatorMenu(this);
 
-  auto newAct = new QAction(tr("&Exit"), this);
-  newAct->setStatusTip(tr("Exits the emulator"));
-  connect(newAct, SIGNAL(triggered()), this, SLOT(exitProgram()));
-  fileoption->addAction(newAct);
+  Parent->setMenuBar(this->menuBar);
+  // auto fileoption = Parent->menuBar()->addMenu("&File");
+
+  // auto newAct = new QAction(tr("&Exit"), this);
+  // newAct->setStatusTip(tr("Exits the emulator"));
+  // connect(newAct, SIGNAL(triggered()), this, SLOT(exitProgram()));
+  // fileoption->addAction(newAct);
 }
 
 void EmulatorCanvas::OnInit()
@@ -78,9 +79,4 @@ void EmulatorCanvas::OnUpdate()
   // audio
   if(emu.beep)
     sound.play();
-}
-
-void EmulatorCanvas::exitProgram()
-{
-  QWidget::parentWidget()->close();
 }

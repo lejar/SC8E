@@ -9,21 +9,22 @@
 
 #include <QMainWindow>
 #include <QObject>
+#include <QMenuBar>
 
 #include "qsfmlcanvas.h"
+#include "emulatormenu.h"
 #include "chip8.h"
 
-class EmulatorCanvas : public QSFMLCanvas
+class EmulatorCanvas : public QSFMLCanvas, private Ui_MenuBar
 {
-  Q_OBJECT
-
 public:
 
   EmulatorCanvas(QMainWindow*, const QPoint&, const QSize&, std::string);
 
-public slots:
+  EmulatorMenu* menuBar;
 
-  void exitProgram();
+  // initialize chip8 module
+  chip8 emu;
 
 private:
 
@@ -31,8 +32,6 @@ private:
 
   void OnUpdate();
 
-  // initialize chip8 module
-  chip8 emu;
 
   // "sprite" for drawing pixels
   sf::RectangleShape shape;

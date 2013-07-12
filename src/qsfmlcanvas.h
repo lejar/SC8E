@@ -11,7 +11,7 @@
 class QSFMLCanvas : public QWidget, public sf::RenderWindow
 {
 public:
-  QSFMLCanvas(QWidget*, const QPoint&, const QSize&, unsigned int = 0);
+  QSFMLCanvas(QWidget*, const QPoint&, const QSize&, unsigned int = 5);
   virtual ~QSFMLCanvas();
 
 private:
