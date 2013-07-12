@@ -7,11 +7,15 @@
 #include <QWidget>
 #include <SFML/Graphics.hpp>
 
-class QSFMLCanvas : public QWidget, public sf::RenderWindow
+class QSFMLCanvas : public QWidget
 {
 public:
   QSFMLCanvas(QWidget*, const QPoint&, const QSize&, unsigned int = 5);
   virtual ~QSFMLCanvas();
+
+protected:
+  bool focus;
+  sf::RenderWindow render;
 
 private:
   virtual void OnInit();
@@ -26,9 +30,6 @@ private:
 
   QTimer myTimer;
   bool myInitialized;
-
-protected:
-  bool focus;
 };
 
 #endif /* QSFMLCANVAS_H */

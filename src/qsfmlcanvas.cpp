@@ -42,8 +42,7 @@ void QSFMLCanvas::showEvent(QShowEvent*)
   // SFML window with widget handle
   // the initialization is deferred to the showEvent handler, so that the
   // context is created in the correct thread
-  this->sf::RenderWindow::create(winId());
-  this->sf::RenderTarget::initialize();
+  render.create(winId());
 
   // initialize some stuff after construction
   OnInit();
@@ -64,12 +63,12 @@ QPaintEngine* QSFMLCanvas::paintEngine() const
 void QSFMLCanvas::paintEvent(QPaintEvent*)
 {
   // ensure the SFML window is active for the current thread
-  this->setActive(true);
+  render.setActive(true);
   // update sfml
   OnUpdate();
 
   // display screen
-  this->display();
+  render.display();
 }
 
 void QSFMLCanvas::OnInit()

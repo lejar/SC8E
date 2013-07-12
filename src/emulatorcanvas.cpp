@@ -44,9 +44,9 @@ void EmulatorCanvas::OnUpdate()
 {
   // poll events
   sf::Event event;
-  while (this->pollEvent(event)) {
+  while (render.pollEvent(event)) {
     if (event.type == sf::Event::Closed) {
-      this->sf::RenderWindow::close();
+      render.sf::RenderWindow::close();
       return;
     }
   }
@@ -67,13 +67,17 @@ void EmulatorCanvas::OnUpdate()
   // draw
   if (emu.drawFlag) {
     emu.drawFlag = false;
-    this->clear(sf::Color(0,0,0,255));
-    for (int x = 0; x < 64; x++)
-      for (int y = 0; y < 32; y++)
+
+    render.clear(sf::Color(0,0,0,255));
+
+    for (int x = 0; x < 64; x++) {
+      for (int y = 0; y < 32; y++) {
         if (emu.gfx[x + y*64]) {
           shape.setPosition(x*10, y*10);
-          this->draw(shape);
+          render.draw(shape);
         }
+      }
+    }
   }
 
   // audio
