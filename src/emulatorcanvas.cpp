@@ -31,6 +31,7 @@ void EmulatorCanvas::OnInit()
 
 void EmulatorCanvas::OnUpdate()
 {
+  if (!focus) return;
 
   // get keys
   std::array<std::uint8_t, 16> keys;
@@ -42,8 +43,7 @@ void EmulatorCanvas::OnUpdate()
   emu.setKeys(keys);
 
   // do cpu cycles
-  if (focus)
-    emu.emulateCycle();
+  emu.emulateCycle();
 
   // draw
   if (emu.drawFlag) {
