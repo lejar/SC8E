@@ -31,27 +31,16 @@ void EmulatorCanvas::OnInit()
 
 void EmulatorCanvas::OnUpdate()
 {
-  // poll events
-  sf::Event event;
-  while (render.pollEvent(event)) {
-    if (event.type == sf::Event::Closed) {
-      render.close();
-      return;
-    }
-  }
+  if (!focus) return;
 
   // get keys
   std::array<std::uint8_t, 16> keys;
   for (int i = 0; i < 16; i++)
-    if (sf::Keyboard::isKeyPressed(layout[i]))
-      keys[i] = 1;
-    else
-      keys[i] = 0;
+    keys[i] = sf::Keyboard::isKeyPressed(layout[i]);
   emu.setKeys(keys);
 
   // do cpu cycles
-  if (focus)
-    emu.emulateCycle();
+  emu.emulateCycle();
 
   // draw
   if (emu.drawFlag) {
