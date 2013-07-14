@@ -8,18 +8,18 @@
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+  Q_OBJECT
 
 public:
-	MainWindow(std::string filename, QWidget* parent = 0);
-	~MainWindow();
+  MainWindow(std::string filename, QWidget* parent = nullptr);
+  ~MainWindow();
 
 private slots:
-	void Exit();
+  void Exit();
 
 private:
-	Ui_MainWindow* ui;
-	EmulatorCanvas* emu;
+  Ui_MainWindow* ui;
+  EmulatorCanvas* emu;
 };
 
 #endif // MAINWINDOW_H

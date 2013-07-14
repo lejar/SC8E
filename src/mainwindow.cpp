@@ -1,22 +1,22 @@
 #include "mainwindow.h"
 
 MainWindow::MainWindow(std::string filename, QWidget* parent) :
-	QMainWindow(parent),
-	ui(new Ui_MainWindow)
+  QMainWindow(parent),
+  ui(new Ui_MainWindow)
 {
-	ui->setupUi(this);
+  ui->setupUi(this);
 
-	connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
+  connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
 
-	show();
+  show();
 
-	if(!filename.empty()) ui->emulator->loadFile(filename);
+  if(!filename.empty()) ui->emulator->loadFile(filename);
 }
 
 MainWindow::~MainWindow() {
-	delete ui;
+  delete ui;
 }
 
 void MainWindow::Exit() {
-	qApp->quit();
+  qApp->quit();
 }
