@@ -11,15 +11,16 @@ class MainWindow : public QMainWindow
   Q_OBJECT
 
 public:
-  MainWindow(std::string filename, QWidget* parent = nullptr);
+  MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
+
+  EmulatorCanvas* emu() { return ui->emulator; }
 
 private slots:
   void Exit();
 
 private:
   Ui_MainWindow* ui;
-  EmulatorCanvas* emu;
 };
 
 #endif // MAINWINDOW_H
