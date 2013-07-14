@@ -6,7 +6,8 @@
 #include "res/blip.h"
 
 EmulatorCanvas::EmulatorCanvas(QWidget* Parent) :
-  QSFMLCanvas(Parent)
+  QSFMLCanvas(Parent),
+  frameRate(60)
 {
 }
 
@@ -14,6 +15,24 @@ bool EmulatorCanvas::loadFile(std::string filename)
 {
   this->filename = filename;
   return emu.loadGame(filename);
+}
+
+void EmulatorCanvas::cpuTick()
+{
+  if (!focus) return;
+
+  // get keys
+  std::array<std::uint8_t, 16> keys;
+  for (int i = 0; i < 16; i++)
+    keys[i] = sf::Keyboard::isKeyPressed(layout[i]);
+  emu.setKeys(keys);
+
+  // do cpu cycles
+  emu.emulateCycle();
+
+  // audio
+  if(emu.beep)
+    sound.play();
 }
 
 void EmulatorCanvas::OnInit()
@@ -27,20 +46,15 @@ void EmulatorCanvas::OnInit()
     std::cerr << "Could not load audio resources, continuing without!" << std::endl;
   else
     sound.setBuffer(buffer);
+
+  cpuTimer.setInterval(1000 / frameRate);
+  connect(&cpuTimer, SIGNAL(timeout()), this, SLOT(cpuTick()));
+  cpuTimer.start();
 }
 
-void EmulatorCanvas::OnUpdate()
+void EmulatorCanvas::OnRepaint()
 {
   if (!focus) return;
-
-  // get keys
-  std::array<std::uint8_t, 16> keys;
-  for (int i = 0; i < 16; i++)
-    keys[i] = sf::Keyboard::isKeyPressed(layout[i]);
-  emu.setKeys(keys);
-
-  // do cpu cycles
-  emu.emulateCycle();
 
   // draw
   if (emu.drawFlag) {
@@ -57,8 +71,4 @@ void EmulatorCanvas::OnUpdate()
       }
     }
   }
-
-  // audio
-  if(emu.beep)
-    sound.play();
 }
