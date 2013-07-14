@@ -18,6 +18,7 @@ public:
 
 private slots:
   void Exit();
+  void FPSActionTriggered(QAction*);
 
 private:
   Ui_MainWindow* ui;

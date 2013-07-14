@@ -17,6 +17,11 @@ bool EmulatorCanvas::loadFile(std::string filename)
   return emu.loadGame(filename);
 }
 
+void EmulatorCanvas::setFrameRate(unsigned int frameRate)
+{
+  this->frameRate = frameRate;
+  cpuTimer.setInterval(1000 / frameRate);
+}
 void EmulatorCanvas::cpuTick()
 {
   if (!focus) return;

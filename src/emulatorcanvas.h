@@ -20,6 +20,7 @@ public:
   EmulatorCanvas(QWidget*);
 
   bool loadFile(std::string);
+  void setFrameRate(unsigned int);
 
   // initialize chip8 module
   chip8 emu;
