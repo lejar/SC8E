@@ -8,18 +8,20 @@
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+  Q_OBJECT
 
 public:
-	MainWindow(std::string filename, QWidget* parent = 0);
-	~MainWindow();
+  MainWindow(QWidget* parent = nullptr);
+  ~MainWindow();
+
+  EmulatorCanvas* emu() { return ui->emulator; }
 
 private slots:
-	void Exit();
+  void Exit();
+  void FPSActionTriggered(QAction*);
 
 private:
-	Ui_MainWindow* ui;
-	EmulatorCanvas* emu;
+  Ui_MainWindow* ui;
 };
 
 #endif // MAINWINDOW_H

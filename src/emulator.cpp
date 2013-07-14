@@ -14,7 +14,13 @@ int main(int argc, char* argv[])
   }
 
   QApplication App(argc, argv);
-  MainWindow w(filename);
+  MainWindow w;
+  EmulatorCanvas* emu = w.emu();
+
+  if(!filename.empty())
+    emu->loadFile(filename);
+
+  w.show();
 
   return App.exec();
 }

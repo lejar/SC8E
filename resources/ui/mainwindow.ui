@@ -26,21 +26,60 @@
     <property name="title">
      <string>File</string>
     </property>
+    <action name="actionClose">
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </action>
     <addaction name="actionClose"/>
     <addaction name="actionTest"/>
    </widget>
-   <addaction name="menuFile"/>
+   <widget class="QMenu" name="menuSettings">
+     <property name="title">
+       <string>Settings</string>
+     </property>
+     <widget class="QMenu" name="menuFPS">
+       <property name="title">
+         <string>FPS</string>
+       </property>
+       <actiongroup name="actiongroupFPS">
+        <action name="actionSetFPS30">
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>30 FPS</string>
+         </property>
+       </action>
+        <action name="actionSetFPS60">
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>60 FPS</string>
+         </property>
+        </action>
+        <action name="actionSetFPS120">
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>120 FPS</string>
+         </property>
+        </action>
+       </actiongroup>
+       <addaction name="actionSetFPS30" />
+       <addaction name="actionSetFPS60" />
+       <addaction name="actionSetFPS120" />
+     </widget>
+     <addaction name="menuFPS" />
+   </widget>
+   <addaction name="menuFile" />
+   <addaction name="menuSettings"/>
   </widget>
-  <action name="actionTest">
-   <property name="text">
-    <string>Test</string>
-   </property>
-  </action>
-  <action name="actionClose">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>

@@ -5,7 +5,7 @@
 #include <X11/Xlib.h>
 #endif
 
-QSFMLCanvas::QSFMLCanvas(QWidget* Parent, unsigned int FrameTime) :
+QSFMLCanvas::QSFMLCanvas(QWidget* Parent = nullptr) :
   QWidget(Parent),
   focus(true),
   myInitialized(false)
@@ -17,9 +17,6 @@ QSFMLCanvas::QSFMLCanvas(QWidget* Parent, unsigned int FrameTime) :
 
   // enable keyboard events to be received
   setFocusPolicy(Qt::StrongFocus);
-
-  // set up timer
-  myTimer.setInterval(FrameTime);
 }
 
 QSFMLCanvas::~QSFMLCanvas()
@@ -45,8 +42,9 @@ void QSFMLCanvas::showEvent(QShowEvent*)
   OnInit();
 
   // set frame rate with timer
-  connect(&myTimer, SIGNAL(timeout()), this, SLOT(repaint()));
-  myTimer.start();
+  repaintTimer.setInterval(1000 / 60);
+  connect(&repaintTimer, SIGNAL(timeout()), this, SLOT(repaint()));
+  repaintTimer.start();
 
   myInitialized = true;
 }
@@ -62,7 +60,7 @@ void QSFMLCanvas::paintEvent(QPaintEvent*)
   // ensure the SFML window is active for the current thread
   render.setActive(true);
   // update sfml
-  OnUpdate();
+  OnRepaint();
 
   // display screen
   render.display();
@@ -72,7 +70,7 @@ void QSFMLCanvas::OnInit()
 {
 }
 
-void QSFMLCanvas::OnUpdate()
+void QSFMLCanvas::OnRepaint()
 {
 }
 
