@@ -15,17 +15,26 @@
 
 class EmulatorCanvas : public QSFMLCanvas
 {
+  Q_OBJECT
 public:
   EmulatorCanvas(QWidget*);
 
   bool loadFile(std::string);
+  void setFrameRate(unsigned int);
 
   // initialize chip8 module
   chip8 emu;
 
+private slots:
+  void cpuTick();
+
 private:
-  void OnInit();
-  void OnUpdate();
+  void OnInit() override;
+  void OnRepaint() override;
+
+  // timer for actual emulation cycles
+  QTimer cpuTimer;
+  unsigned int frameRate;
 
   // "sprite" for drawing pixels
   sf::RectangleShape shape;

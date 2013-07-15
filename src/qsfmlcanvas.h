@@ -9,8 +9,9 @@
 
 class QSFMLCanvas : public QWidget
 {
+  Q_OBJECT
 public:
-  QSFMLCanvas(QWidget*, unsigned int = 5);
+  QSFMLCanvas(QWidget*);
   virtual ~QSFMLCanvas();
 
 protected:
@@ -19,7 +20,7 @@ protected:
 
 private:
   virtual void OnInit();
-  virtual void OnUpdate();
+  virtual void OnRepaint();
 
   void showEvent(QShowEvent*);
   void paintEvent(QPaintEvent*);
@@ -28,7 +29,7 @@ private:
   virtual void focusInEvent(QFocusEvent*);
   virtual void focusOutEvent(QFocusEvent*);
 
-  QTimer myTimer;
+  QTimer repaintTimer;
   bool myInitialized;
 };
 

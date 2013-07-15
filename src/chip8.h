@@ -20,7 +20,6 @@ public:
   bool loadGame(std::string);
   void emulateCycle();
   void setKeys(std::array<std::uint8_t, 16>);
-  void debugRender();
 
   // screen was redrawn
   bool drawFlag;
