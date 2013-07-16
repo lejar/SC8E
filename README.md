@@ -26,5 +26,5 @@ Enjoy!
 License
 =======
 
-Licensed under MIT/X11 license, see [LICENSE](https://github.com/lejar/SC8E/blob/qtIntegration/LICENSE).
+Licensed under MIT/X11 license, see [LICENSE](https://github.com/lejar/SC8E/blob/master/LICENSE).
 
