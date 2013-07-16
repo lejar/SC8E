@@ -18,6 +18,7 @@ public:
 
 private slots:
   void Exit();
+  void Open();
   void FPSActionTriggered(QAction*);
 
 private:

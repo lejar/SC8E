@@ -8,21 +8,9 @@
 #include <ios>
 #include <string>
 
-chip8::chip8() :
-  drawFlag(true),
-  gfx({{}}),
-  I(0),
-  pc(0x200),
-  sp(0),
-  delay_timer(0),
-  sound_timer(0),
-  stack({{}}),
-  memory({{}}),
-  V({{}}),
-  key({{}})
+chip8::chip8()
 {
-  std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
-
+  reset();
   std::srand(std::time(0));
 }
 
@@ -66,6 +54,23 @@ void chip8::emulateCycle()
     --sound_timer;
   }
 
+}
+
+void chip8::reset()
+{
+  drawFlag    = true;
+  gfx         = {{}};
+  I           = 0;
+  pc          = 0x200;
+  sp          = 0;
+  delay_timer = 0;
+  sound_timer = 0;
+  stack       = {{}};
+  memory      = {{}};
+  V           = {{}};
+  key         = {{}};
+
+  std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
 }
 
 void chip8::setKeys(std::array<std::uint8_t, 16> keys)

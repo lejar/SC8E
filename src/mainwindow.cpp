@@ -1,3 +1,5 @@
+#include <QFileDialog>
+
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget* parent) :
@@ -11,6 +13,7 @@ MainWindow::MainWindow(QWidget* parent) :
   ui->actiongroupFPS->addAction(ui->actionSetFPS120);
 
   connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
+  connect(ui->actionOpen, SIGNAL(triggered()), SLOT(Open()));
   connect(ui->actiongroupFPS, SIGNAL(triggered(QAction*)), SLOT(FPSActionTriggered(QAction*)));
 }
 
@@ -20,6 +23,17 @@ MainWindow::~MainWindow() {
 
 void MainWindow::Exit() {
   qApp->quit();
+}
+
+void MainWindow::Open() {
+  std::string fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                 "",
+                                                 tr("Files (*.*)")).toStdString();
+  if (fileName == "") return;
+
+  emu()->emu.reset();
+  emu()->emu.loadGame(fileName);
+
 }
 
 void MainWindow::FPSActionTriggered(QAction* action) {

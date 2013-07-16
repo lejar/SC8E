@@ -26,6 +26,12 @@
     <property name="title">
      <string>File</string>
     </property>
+    <action name="actionOpen">
+     <property name="text">
+      <string>Open</string>
+     </property>
+    </action>
+    <addaction name="actionOpen"/>
     <action name="actionClose">
      <property name="text">
       <string>Exit</string>
