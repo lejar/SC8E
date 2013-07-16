@@ -17,8 +17,6 @@ chip8::chip8()
 bool chip8::loadGame(std::string filename)
 {
   if (filename == "") return false;
-
-  fileName = filename;
   reset();
 
   std::ifstream file(filename, std::ios::binary | std::ios::ate);
