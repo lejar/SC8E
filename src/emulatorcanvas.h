@@ -4,6 +4,7 @@
 #include <array>
 #include <string>
 
+#include <QThread>
 #include <QWidget>
 
 #include <SFML/Audio.hpp>
@@ -18,6 +19,7 @@ class EmulatorCanvas : public QSFMLCanvas
   Q_OBJECT
 public:
   EmulatorCanvas(QWidget*);
+  virtual ~EmulatorCanvas();
 
   bool loadFile(std::string);
   void setFrameRate(unsigned int);
@@ -33,6 +35,7 @@ private:
   void OnRepaint() override;
 
   // timer for actual emulation cycles
+  QThread cpuThread;
   QTimer cpuTimer;
   unsigned int frameRate;
 

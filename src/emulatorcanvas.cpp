@@ -11,6 +11,12 @@ EmulatorCanvas::EmulatorCanvas(QWidget* Parent) :
 {
 }
 
+EmulatorCanvas::~EmulatorCanvas()
+{
+  cpuThread.quit();
+  cpuThread.wait();
+}
+
 bool EmulatorCanvas::loadFile(std::string filename)
 {
   this->filename = filename;
@@ -53,8 +59,10 @@ void EmulatorCanvas::OnInit()
     sound.setBuffer(buffer);
 
   cpuTimer.setInterval(1000 / frameRate);
-  connect(&cpuTimer, SIGNAL(timeout()), this, SLOT(cpuTick()));
-  cpuTimer.start();
+  cpuTimer.moveToThread(&cpuThread);
+  connect(&cpuTimer, SIGNAL(timeout()), this, SLOT(cpuTick()), Qt::DirectConnection);
+  connect(&cpuThread, SIGNAL(started()), &cpuTimer, SLOT(start()), Qt::DirectConnection);
+  cpuThread.start();
 }
 
 void EmulatorCanvas::OnRepaint()
