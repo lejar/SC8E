@@ -38,6 +38,7 @@
      </property>
     </action>
     <addaction name="actionReload"/>
+    <addaction name="separator" />
     <action name="actionClose">
      <property name="text">
       <string>Exit</string>
