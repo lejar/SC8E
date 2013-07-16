@@ -45,6 +45,9 @@ protected:
   // input variables
   std::array<std::uint8_t, 16> key;
 
+  // current open file name
+  std::string fileName;
+
 private:
   // opcodes
   void CLS    (std::uint16_t);

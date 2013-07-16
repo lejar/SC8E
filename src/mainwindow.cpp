@@ -29,9 +29,6 @@ void MainWindow::Open() {
   std::string fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                  "",
                                                  tr("Files (*.*)")).toStdString();
-  if (fileName == "") return;
-
-  emu()->emu.reset();
   emu()->emu.loadGame(fileName);
 
 }
