@@ -32,7 +32,6 @@
      </property>
     </action>
     <addaction name="actionClose"/>
-    <addaction name="actionTest"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
      <property name="title">
