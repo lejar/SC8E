@@ -10,7 +10,7 @@
 				"ui_*.h"
 			],
 			"file_exclude_patterns": [
-				"*.o",
+				"*.o"
 			],
 			"folder_exclude_patterns": [
 				"include/gtest"
