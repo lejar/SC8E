@@ -31,7 +31,6 @@ void MainWindow::Open() {
                                                  "",
                                                  tr("Files (*.*)")).toStdString();
   emu()->loadFile(fileName);
-
 }
 
 void MainWindow::Reload() {
