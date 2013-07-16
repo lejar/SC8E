@@ -78,6 +78,13 @@ void chip8::reset()
   std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
 }
 
+void chip8::reload()
+{
+  if (fileName == "") return;
+  reset();
+  loadGame(fileName);
+}
+
 void chip8::setKeys(std::array<std::uint8_t, 16> keys)
 {
   for (int i = 0; i < 16; i++)

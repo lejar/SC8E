@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget* parent) :
 
   connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
   connect(ui->actionOpen, SIGNAL(triggered()), SLOT(Open()));
+  connect(ui->actionReload, SIGNAL(triggered()), SLOT(Reload()));
   connect(ui->actiongroupFPS, SIGNAL(triggered(QAction*)), SLOT(FPSActionTriggered(QAction*)));
 }
 
@@ -31,6 +32,10 @@ void MainWindow::Open() {
                                                  tr("Files (*.*)")).toStdString();
   emu()->emu.loadGame(fileName);
 
+}
+
+void MainWindow::Reload() {
+  emu()->emu.reload();
 }
 
 void MainWindow::FPSActionTriggered(QAction* action) {

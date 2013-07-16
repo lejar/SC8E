@@ -32,6 +32,12 @@
      </property>
     </action>
     <addaction name="actionOpen"/>
+   <action name="actionReload">
+     <property name="text">
+      <string>Reload</string>
+     </property>
+    </action>
+    <addaction name="actionReload"/>
     <action name="actionClose">
      <property name="text">
       <string>Exit</string>

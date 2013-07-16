@@ -20,6 +20,7 @@ public:
   bool loadGame(std::string);
   void emulateCycle();
   void reset();
+  void reload();
   void setKeys(std::array<std::uint8_t, 16>);
 
   // screen was redrawn
