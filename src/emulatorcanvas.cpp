@@ -23,6 +23,11 @@ bool EmulatorCanvas::loadFile(std::string filename)
   return emu.loadGame(filename);
 }
 
+bool EmulatorCanvas::reloadFile()
+{
+  loadFile(filename);
+}
+
 void EmulatorCanvas::setFrameRate(unsigned int frameRate)
 {
   this->frameRate = frameRate;

@@ -35,7 +35,7 @@ void MainWindow::Open() {
 }
 
 void MainWindow::Reload() {
-  emu()->emu.reload();
+  emu()->reloadFile();
 }
 
 void MainWindow::FPSActionTriggered(QAction* action) {

@@ -20,7 +20,6 @@ public:
   bool loadGame(std::string);
   void emulateCycle();
   void reset();
-  void reload();
   void setKeys(std::array<std::uint8_t, 16>);
 
   // screen was redrawn
@@ -45,9 +44,6 @@ protected:
 
   // input variables
   std::array<std::uint8_t, 16> key;
-
-  // current open file name
-  std::string fileName;
 
 private:
   // opcodes

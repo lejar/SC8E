@@ -22,6 +22,7 @@ public:
   virtual ~EmulatorCanvas();
 
   bool loadFile(std::string);
+  bool reloadFile();
   void setFrameRate(unsigned int);
 
   // initialize chip8 module
