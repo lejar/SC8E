@@ -52,6 +52,7 @@ qt4_wrap_cpp(HEADERS_MOC
   src/mainwindow.h
   src/emulatorcanvas.h
   src/qsfmlcanvas.h
+  src/timedworker.h
 )
 qt4_wrap_ui(FORMS_HEADERS
   resources/ui/mainwindow.ui
@@ -61,11 +62,12 @@ qt4_wrap_ui(FORMS_HEADERS
 set(EXECUTABLE_NAME Chip8Emulator)
 add_executable(${EXECUTABLE_NAME}
   src/emulator.cpp
-  src/instructions.cpp
   src/chip8.cpp
-  src/qsfmlcanvas.cpp
   src/emulatorcanvas.cpp
+  src/instructions.cpp
   src/mainwindow.cpp
+  src/qsfmlcanvas.cpp
+  src/timedworker.cpp
   ${RESOURCE_HEADERS}
   ${HEADERS_MOC}
   ${FORMS_HEADERS}

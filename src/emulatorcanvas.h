@@ -4,15 +4,28 @@
 #include <array>
 #include <string>
 
-#include <QThread>
 #include <QWidget>
 
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "qsfmlcanvas.h"
 #include "chip8.h"
+#include "qsfmlcanvas.h"
+#include "timedworker.h"
+
+class EmulationWorker : public TimedWorker
+{
+  Q_OBJECT
+public:
+  EmulationWorker(int frameRate = 60) : TimedWorker(frameRate) { }
+  chip8 emu;
+
+protected:
+  void tick() override {
+    emu.emulateCycle();
+  }
+};
 
 class EmulatorCanvas : public QSFMLCanvas
 {
@@ -24,21 +37,14 @@ public:
   bool loadFile(std::string);
   bool reloadFile();
   void setFrameRate(unsigned int);
-
-  // initialize chip8 module
-  chip8 emu;
-
-private slots:
-  void cpuTick();
+  void updateInput();
 
 private:
   void OnInit() override;
   void OnRepaint() override;
 
-  // timer for actual emulation cycles
-  QThread cpuThread;
-  QTimer cpuTimer;
-  unsigned int frameRate;
+  // emulation worker which lives on a separate thread
+  EmulationWorker* worker;
 
   // "sprite" for drawing pixels
   sf::RectangleShape shape;
