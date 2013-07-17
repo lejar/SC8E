@@ -6,21 +6,22 @@
 #include "res/blip.h"
 
 EmulatorCanvas::EmulatorCanvas(QWidget* Parent) :
-  QSFMLCanvas(Parent),
-  frameRate(60)
+  QSFMLCanvas(Parent)
 {
+  worker = new EmulationWorker();
+  connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
 }
 
 EmulatorCanvas::~EmulatorCanvas()
 {
-  cpuThread.quit();
-  cpuThread.wait();
+  worker->terminate();
+  worker->wait();
 }
 
 bool EmulatorCanvas::loadFile(std::string filename)
 {
   this->filename = filename;
-  return emu.loadGame(filename);
+  return worker->emu.loadGame(filename);
 }
 
 bool EmulatorCanvas::reloadFile()
@@ -30,25 +31,17 @@ bool EmulatorCanvas::reloadFile()
 
 void EmulatorCanvas::setFrameRate(unsigned int frameRate)
 {
-  this->frameRate = frameRate;
-  cpuTimer.setInterval(1000 / frameRate);
+  worker->setFrameRate(frameRate);
 }
-void EmulatorCanvas::cpuTick()
-{
-  if (!focus) return;
 
+void EmulatorCanvas::updateInput()
+{
   // get keys
   std::array<std::uint8_t, 16> keys;
   for (int i = 0; i < 16; i++)
     keys[i] = sf::Keyboard::isKeyPressed(layout[i]);
-  emu.setKeys(keys);
 
-  // do cpu cycles
-  emu.emulateCycle();
-
-  // audio
-  if(emu.beep)
-    sound.play();
+  worker->emu.setKeys(keys);
 }
 
 void EmulatorCanvas::OnInit()
@@ -63,30 +56,32 @@ void EmulatorCanvas::OnInit()
   else
     sound.setBuffer(buffer);
 
-  cpuTimer.setInterval(1000 / frameRate);
-  cpuTimer.moveToThread(&cpuThread);
-  connect(&cpuTimer, SIGNAL(timeout()), this, SLOT(cpuTick()), Qt::DirectConnection);
-  connect(&cpuThread, SIGNAL(started()), &cpuTimer, SLOT(start()), Qt::DirectConnection);
-  cpuThread.start();
+  worker->start();
 }
 
 void EmulatorCanvas::OnRepaint()
 {
+  worker->paused = !focus;
   if (!focus) return;
 
+  updateInput();
+
   // draw
-  if (emu.drawFlag) {
-    emu.drawFlag = false;
+  if (worker->emu.drawFlag) {
+    worker->emu.drawFlag = false;
 
     render.clear(sf::Color(0,0,0,255));
 
     for (int x = 0; x < 64; x++) {
       for (int y = 0; y < 32; y++) {
-        if (emu.gfx[x + y*64]) {
+        if (worker->emu.gfx[x + y*64]) {
           shape.setPosition(x*10, y*10);
           render.draw(shape);
         }
       }
     }
   }
+
+  if (worker->emu.beep)
+    sound.play();
 }
