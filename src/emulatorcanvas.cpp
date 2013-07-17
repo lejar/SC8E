@@ -26,7 +26,7 @@ bool EmulatorCanvas::loadFile(std::string filename)
 
 bool EmulatorCanvas::reloadFile()
 {
-  loadFile(filename);
+  return loadFile(filename);
 }
 
 void EmulatorCanvas::setFrameRate(unsigned int frameRate)
