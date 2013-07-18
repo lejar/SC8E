@@ -17,7 +17,6 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURR
 # Qt
 find_package(Qt4 REQUIRED)
 include(${QT_USE_FILE})
-add_definitions(${QT_DEFINITIONS})
 # Xlib
 enable_language(C)
 find_package(X11)
