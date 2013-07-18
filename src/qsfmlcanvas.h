@@ -11,7 +11,7 @@ class QSFMLCanvas : public QWidget
 {
   Q_OBJECT
 public:
-  QSFMLCanvas(QWidget*);
+  QSFMLCanvas(QWidget* = nullptr);
   virtual ~QSFMLCanvas();
 
 protected:
