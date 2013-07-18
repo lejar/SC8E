@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 
-include_directories(${gtest_SOURCE_DIR}/include)
+include_directories(SYSTEM ${gtest_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 enable_testing()

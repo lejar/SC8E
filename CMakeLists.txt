@@ -20,10 +20,10 @@ include(${QT_USE_FILE})
 # Xlib
 enable_language(C)
 find_package(X11)
-include_directories(${X11_INCLUDE_DIR})
+include_directories(SYSTEM ${X11_INCLUDE_DIR})
 # SFML
 find_package(SFML 2 REQUIRED system window graphics network audio)
-include_directories(${SFML_INCLUDE_DIR})
+include_directories(SYSTEM ${SFML_INCLUDE_DIR})
 
 # Subdirectories
 if(tests)
