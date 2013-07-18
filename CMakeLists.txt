@@ -9,7 +9,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -pedantic")
+list(APPEND CMAKE_CXX_FLAGS "-std=c++0x -Wall -Wextra -pedantic -Werror")
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 

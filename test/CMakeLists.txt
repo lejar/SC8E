@@ -19,5 +19,10 @@ add_executable(Chip8Test EXCLUDE_FROM_ALL
   ${CMAKE_SOURCE_DIR}/src/chip8.cpp
 )
 target_link_libraries(Chip8Test gtest_main)
+# disable warning clang generates for gtest
+set_target_properties(gtest gtest_main PROPERTIES
+  COMPILE_FLAGS "-Wno-error=missing-field-initializers"
+)
+
 add_test(Chip8Test Chip8Test)
 add_dependencies(build_tests Chip8Test)
