@@ -70,11 +70,13 @@ void EmulatorCanvas::OnRepaint()
   if (worker->emu.drawFlag) {
     worker->emu.drawFlag = false;
 
-    render.clear(sf::Color(0,0,0,255));
+    render.clear(sf::Color::Black);
+
+    chip8::GfxMem gfx(worker->emu.getGfxBuffer());
 
     for (int x = 0; x < 64; x++) {
       for (int y = 0; y < 32; y++) {
-        if (worker->emu.gfx[x + y*64]) {
+        if (gfx[x + y*64]) {
           shape.setPosition(x*10, y*10);
           render.draw(shape);
         }
