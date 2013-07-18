@@ -5,7 +5,7 @@
 #include <X11/Xlib.h>
 #endif
 
-QSFMLCanvas::QSFMLCanvas(QWidget* Parent = nullptr) :
+QSFMLCanvas::QSFMLCanvas(QWidget* Parent) :
   QWidget(Parent),
   focus(true),
   myInitialized(false)
