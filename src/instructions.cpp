@@ -3,7 +3,9 @@
 // 0x00E0 clears the screen
 void chip8::CLS(std::uint16_t)
 {
+  gfxMutex.lock();
   std::fill(gfx.begin(), gfx.end(), 0);
+  gfxMutex.unlock();
   drawFlag = true;
   pc += 2;
 }
@@ -176,6 +178,8 @@ void chip8::DRW(std::uint16_t opcode)
   std::uint8_t height = (opcode & 0x000F);
 
   V[0xF] = 0;
+
+  gfxMutex.lock();
   // run through each row
   for (int yline = 0; yline < height; yline++)
   {
@@ -199,6 +203,7 @@ void chip8::DRW(std::uint16_t opcode)
       }
     }
   }
+  gfxMutex.unlock();
 
   drawFlag = true;
   pc += 2;

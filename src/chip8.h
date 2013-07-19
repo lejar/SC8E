@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <functional>
 #include <map>
+#include <mutex>
 #include <string>
 
 class chip8;
@@ -15,17 +16,18 @@ typedef void Opcode(std::uint16_t);
 class chip8
 {
 public:
+  using GfxMem = std::array<std::uint8_t, 32 * 64>;
+
   // functions
   chip8();
   bool loadGame(std::string);
   void emulateCycle();
   void reset();
   void setKeys(std::array<std::uint8_t, 16>);
+  GfxMem getGfxBuffer();
 
   // screen was redrawn
   bool drawFlag;
-  // graphics memory
-  std::array<std::uint8_t, (64 * 32)> gfx;
 
   // audio variable
   bool beep;
@@ -35,12 +37,18 @@ protected:
   std::uint16_t I;
   std::uint16_t pc;
   std::uint16_t sp;
+
   // timers
   std::uint8_t delay_timer;
   std::uint8_t sound_timer;
+
+  // memory
   std::array<std::uint16_t, 16>     stack;
   std::array<std::uint8_t,  4096>   memory;
   std::array<std::uint8_t,  16>     V;
+
+  // graphics memory
+  GfxMem gfx;
 
   // input variables
   std::array<std::uint8_t, 16> key;
@@ -102,6 +110,8 @@ private:
     0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
     0xF0, 0x80, 0xF0, 0x80, 0x80  // F
   }};
+
+  std::mutex gfxMutex;
 
   // bit masks with each position in the array
   // corresponding to the first byte of the opcode

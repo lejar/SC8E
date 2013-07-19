@@ -81,3 +81,12 @@ void chip8::setKeys(std::array<std::uint8_t, 16> keys)
   for (int i = 0; i < 16; i++)
     key[i] = keys[i];
 }
+
+chip8::GfxMem chip8::getGfxBuffer()
+{
+  gfxMutex.lock();
+  GfxMem buf(gfx);
+  gfxMutex.unlock();
+
+  return buf;
+}
