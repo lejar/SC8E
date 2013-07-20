@@ -29,9 +29,9 @@ bool EmulatorCanvas::reloadFile()
   return loadFile(filename);
 }
 
-void EmulatorCanvas::setFrameRate(unsigned int frameRate)
+void EmulatorCanvas::setClockRate(unsigned int freq)
 {
-  worker->setFrameRate(frameRate);
+  worker->setFrequency(freq);
 }
 
 void EmulatorCanvas::updateInput()

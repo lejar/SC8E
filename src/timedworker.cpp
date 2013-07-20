@@ -2,9 +2,9 @@
 
 #include <QElapsedTimer>
 
-TimedWorker::TimedWorker(int frameRate) : paused(false)
+TimedWorker::TimedWorker(int freq) : paused(false)
 {
-  setFrameRate(frameRate);
+  setFrequency(freq);
 }
 
 void TimedWorker::run()
@@ -25,8 +25,8 @@ void TimedWorker::run()
   }
 }
 
-void TimedWorker::setFrameRate(int fps)
+void TimedWorker::setFrequency(int freq)
 {
-  frameRate = fps;
-  usecPerFrame = 1000000ll / frameRate;
+  frequency = freq;
+  usecPerFrame = 1000000ll / freq;
 }

@@ -8,14 +8,14 @@ MainWindow::MainWindow(QWidget* parent) :
 {
   ui->setupUi(this);
 
-  ui->actiongroupFPS->addAction(ui->actionSetFPS30);
-  ui->actiongroupFPS->addAction(ui->actionSetFPS60);
-  ui->actiongroupFPS->addAction(ui->actionSetFPS120);
+  ui->actiongroupClockRate->addAction(ui->actionSetClockRate30);
+  ui->actiongroupClockRate->addAction(ui->actionSetClockRate60);
+  ui->actiongroupClockRate->addAction(ui->actionSetClockRate120);
 
   connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
   connect(ui->actionOpen, SIGNAL(triggered()), SLOT(Open()));
   connect(ui->actionReload, SIGNAL(triggered()), SLOT(Reload()));
-  connect(ui->actiongroupFPS, SIGNAL(triggered(QAction*)), SLOT(FPSActionTriggered(QAction*)));
+  connect(ui->actiongroupClockRate, SIGNAL(triggered(QAction*)), SLOT(FPSActionTriggered(QAction*)));
 }
 
 MainWindow::~MainWindow() {
@@ -38,10 +38,10 @@ void MainWindow::Reload() {
 }
 
 void MainWindow::FPSActionTriggered(QAction* action) {
-  unsigned int fps = 60;
-  if (action == ui->actionSetFPS30 ) fps = 30;
-  if (action == ui->actionSetFPS60 ) fps = 60;
-  if (action == ui->actionSetFPS120) fps = 120;
+  unsigned int freq = 60;
+  if (action == ui->actionSetClockRate30 ) freq = 30;
+  if (action == ui->actionSetClockRate60 ) freq = 60;
+  if (action == ui->actionSetClockRate120) freq = 120;
 
-  emu()->setFrameRate(fps);
+  emu()->setClockRate(freq);
 }
