@@ -20,8 +20,12 @@ EmulatorCanvas::~EmulatorCanvas()
 
 bool EmulatorCanvas::loadFile(std::string filename)
 {
-  this->filename = filename;
-  return worker->emu.loadGame(filename);
+  if(worker->emu.loadGame(filename)) {
+    this->filename = filename;
+    return false;
+  }
+
+  return true;
 }
 
 bool EmulatorCanvas::reloadFile()
@@ -29,9 +33,9 @@ bool EmulatorCanvas::reloadFile()
   return loadFile(filename);
 }
 
-void EmulatorCanvas::setFrameRate(unsigned int frameRate)
+void EmulatorCanvas::setClockRate(unsigned int freq)
 {
-  worker->setFrameRate(frameRate);
+  worker->setFrequency(freq);
 }
 
 void EmulatorCanvas::updateInput()

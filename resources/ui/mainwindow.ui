@@ -50,20 +50,20 @@
      <property name="title">
        <string>Settings</string>
      </property>
-     <widget class="QMenu" name="menuFPS">
+     <widget class="QMenu" name="menuClockRate">
        <property name="title">
-         <string>FPS</string>
+         <string>Clock rate</string>
        </property>
-       <actiongroup name="actiongroupFPS">
-        <action name="actionSetFPS30">
+       <actiongroup name="actiongroupClockRate">
+        <action name="actionSetClockRate30">
          <property name="checkable">
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>30 FPS</string>
+          <string>30 Hz</string>
          </property>
        </action>
-        <action name="actionSetFPS60">
+        <action name="actionSetClockRate60">
          <property name="checkable">
           <bool>true</bool>
          </property>
@@ -71,23 +71,23 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>60 FPS</string>
+          <string>60 Hz</string>
          </property>
         </action>
-        <action name="actionSetFPS120">
+        <action name="actionSetClockRate120">
          <property name="checkable">
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>120 FPS</string>
+          <string>120 Hz</string>
          </property>
         </action>
        </actiongroup>
-       <addaction name="actionSetFPS30" />
-       <addaction name="actionSetFPS60" />
-       <addaction name="actionSetFPS120" />
+       <addaction name="actionSetClockRate30" />
+       <addaction name="actionSetClockRate60" />
+       <addaction name="actionSetClockRate120" />
      </widget>
-     <addaction name="menuFPS" />
+     <addaction name="menuClockRate" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuSettings"/>
