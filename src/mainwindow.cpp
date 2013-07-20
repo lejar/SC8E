@@ -1,6 +1,7 @@
-#include <QFileDialog>
-
 #include "mainwindow.h"
+
+#include <QFileDialog>
+#include <QString>
 
 MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent),
@@ -15,7 +16,8 @@ MainWindow::MainWindow(QWidget* parent) :
   connect(ui->actionClose, SIGNAL(triggered()), SLOT(Exit()));
   connect(ui->actionOpen, SIGNAL(triggered()), SLOT(Open()));
   connect(ui->actionReload, SIGNAL(triggered()), SLOT(Reload()));
-  connect(ui->actiongroupClockRate, SIGNAL(triggered(QAction*)), SLOT(FPSActionTriggered(QAction*)));
+  connect(ui->actiongroupClockRate, SIGNAL(triggered(QAction*)),
+    SLOT(FPSActionTriggered(QAction*)));
 }
 
 MainWindow::~MainWindow() {
@@ -27,10 +29,9 @@ void MainWindow::Exit() {
 }
 
 void MainWindow::Open() {
-  std::string fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                 "",
-                                                 tr("Files (*.*)")).toStdString();
-  emu()->loadFile(fileName);
+  QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+    "", tr("Files (*.*)"));
+  emu()->loadFile(fileName.toStdString());
 }
 
 void MainWindow::Reload() {
