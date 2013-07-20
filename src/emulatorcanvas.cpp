@@ -20,8 +20,12 @@ EmulatorCanvas::~EmulatorCanvas()
 
 bool EmulatorCanvas::loadFile(std::string filename)
 {
-  this->filename = filename;
-  return worker->emu.loadGame(filename);
+  if(worker->emu.loadGame(filename)) {
+    this->filename = filename;
+    return false;
+  }
+
+  return true;
 }
 
 bool EmulatorCanvas::reloadFile()
