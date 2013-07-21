@@ -37,6 +37,7 @@ void QSFMLCanvas::showEvent(QShowEvent*)
   // the initialization is deferred to the showEvent handler, so that the
   // context is created in the correct thread
   render.create(winId());
+  render.setFramerateLimit(0);
 
   // initialize some stuff after construction
   OnInit();
