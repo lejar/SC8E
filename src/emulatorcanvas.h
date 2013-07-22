@@ -34,7 +34,7 @@ public:
   EmulatorCanvas(QWidget*);
   virtual ~EmulatorCanvas();
 
-  bool loadFile(std::string);
+  bool loadFile(const std::string&);
   bool reloadFile();
   void setClockRate(unsigned int);
   void updateInput();

@@ -14,7 +14,7 @@ chip8::chip8()
   std::srand(std::time(0));
 }
 
-bool chip8::loadGame(std::string filename)
+bool chip8::loadGame(const std::string& filename)
 {
   if (filename == "") return false;
   reset();
@@ -76,10 +76,9 @@ void chip8::reset()
   std::copy(chip8_fontset.begin(), chip8_fontset.end(), memory.begin());
 }
 
-void chip8::setKeys(std::array<std::uint8_t, 16> keys)
+void chip8::setKeys(const std::array<std::uint8_t, 16>& keys)
 {
-  for (int i = 0; i < 16; i++)
-    key[i] = keys[i];
+  key = keys;
 }
 
 chip8::GfxMem chip8::getGfxBuffer()
