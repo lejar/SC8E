@@ -18,7 +18,7 @@ class EmulationWorker : public TimedWorker
 {
   Q_OBJECT
 public:
-  EmulationWorker(int frameRate = 60) : TimedWorker(frameRate) { }
+  EmulationWorker(int frequency = 60) : TimedWorker(frequency) { }
   chip8 emu;
 
 protected:
@@ -36,7 +36,7 @@ public:
 
   bool loadFile(std::string);
   bool reloadFile();
-  void setFrameRate(unsigned int);
+  void setClockRate(unsigned int);
   void updateInput();
 
 private:

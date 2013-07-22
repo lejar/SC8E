@@ -7,10 +7,10 @@ class TimedWorker : public QThread
 {
   Q_OBJECT
 public:
-  TimedWorker(int frameRate);
+  TimedWorker(int frequency);
 
   void run();
-  void setFrameRate(int fps);
+  void setFrequency(int freq);
 
   bool paused;
 
@@ -18,7 +18,7 @@ protected:
   virtual void tick() = 0;
 
 private:
-  int frameRate;
+  int frequency;
   int usecPerFrame;
 };
 
