@@ -20,10 +20,10 @@ public:
 
   // functions
   chip8();
-  bool loadGame(std::string);
+  bool loadGame(const std::string&);
   void emulateCycle();
   void reset();
-  void setKeys(std::array<std::uint8_t, 16>);
+  void setKeys(const std::array<std::uint8_t, 16>&);
   GfxMem getGfxBuffer();
 
   // screen was redrawn

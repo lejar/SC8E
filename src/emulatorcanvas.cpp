@@ -18,7 +18,7 @@ EmulatorCanvas::~EmulatorCanvas()
   worker->wait();
 }
 
-bool EmulatorCanvas::loadFile(std::string filename)
+bool EmulatorCanvas::loadFile(const std::string& filename)
 {
   if(worker->emu.loadGame(filename)) {
     this->filename = filename;

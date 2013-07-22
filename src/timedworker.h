@@ -7,10 +7,10 @@ class TimedWorker : public QThread
 {
   Q_OBJECT
 public:
-  TimedWorker(int frequency);
+  TimedWorker(unsigned int frequency);
 
   void run();
-  void setFrequency(int freq);
+  void setFrequency(unsigned int freq);
 
   bool paused;
 
@@ -18,8 +18,8 @@ protected:
   virtual void tick() = 0;
 
 private:
-  int frequency;
-  int usecPerFrame;
+  unsigned int frequency;
+  unsigned int usecPerFrame;
 };
 
 #endif
